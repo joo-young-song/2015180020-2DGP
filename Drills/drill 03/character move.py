@@ -10,7 +10,10 @@ x = 0
 y = 0
 
 head = 0
-while(head < 5):
+
+z = 270
+
+while(head < 7):
     if(head == 0):
         while (x < 800):
             clear_canvas_now()
@@ -18,6 +21,7 @@ while(head < 5):
             character.draw_now(x, 90)
             x = x + 2
             if(x >= 800):
+                z = 270
                 head = 1 
             delay(0.01)    
     elif(head == 1):
@@ -46,10 +50,42 @@ while(head < 5):
             character.draw_now(0, y + 90)
             y = y - 2
             if(y <= 0):
-                head = 0
+                head = 4
             delay(0.01)
-        
-    
+    elif(head == 4):
+        while(x < 400):
+            clear_canvas_now()
+            grass.draw_now(400, 30)
+            character.draw_now(x, 90)
+            x = x + 2
+            if(x >= 400):
+                head = 5 
+            delay(0.01)
+    elif(head == 5):
+        while(z < 630):
+            clear_canvas_now()
+            grass.draw_now(400, 30)
+                        
+            x = 220*math.cos(math.radians(z))
+            y = 220*math.sin(math.radians(z))
+            character.draw_now(x + 400 , y + 300)
+                       
 
+            z = z + 1
+            if(z >= 630):
+                head = 6
+                x = 400
+                y = 30
+            delay(0.01)     
+    elif(head==6):
+         while (x < 800):
+            clear_canvas_now()
+            grass.draw_now(400, 30)
+            character.draw_now(x, 90)
+            x = x + 2
+            if(x >= 400):
+                z = 270
+                head = 1 
+            delay(0.01) 
 
 close_canvas()
