@@ -153,15 +153,15 @@ def move_character_10():
 
 
 while True:
-    #move_character_1()
-    #move_character_2()
-    #move_character_3()
-    #move_character_4()
-    #move_character_5()
-    #move_character_6()
-    #move_character_7()
-    #move_character_8()
-    #move_character_9()
+    move_character_1()
+    move_character_2()
+    move_character_3()
+    move_character_4()
+    move_character_5()
+    move_character_6()
+    move_character_7()
+    move_character_8()
+    move_character_9()
     move_character_10()
 
 
