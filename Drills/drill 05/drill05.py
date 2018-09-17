@@ -116,7 +116,7 @@ def move_character_8():
     while i < 10:
         clear_canvas_now()
         frame = (frame + 1) % 8
-        character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        character.clip_draw(frame * 100, 0, 100, 100, x, y)
         update_canvas()
         x = x + x3
         y = y + y3
