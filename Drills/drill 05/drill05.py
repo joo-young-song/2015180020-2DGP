@@ -123,7 +123,19 @@ def move_character_8():
         i += 1
         delay(0.05)
 def move_character_9():
-    pass
+    x ,y= 682,336
+    frame = 0
+    x3,y3 = (712-682)/10 , (349-336)/10
+    i = 0
+    while i < 10:
+        clear_canvas_now()
+        frame = (frame + 1) % 8
+        character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        update_canvas()
+        x = x + x3
+        y = y + y3
+        i += 1
+        delay(0.05)
 def move_character_10():
     pass
 
@@ -137,7 +149,7 @@ while True:
     #move_character_5()
     #move_character_6()
     #move_character_7()
-    move_character_8()
+    #move_character_8()
     move_character_9()
     move_character_10()
 
