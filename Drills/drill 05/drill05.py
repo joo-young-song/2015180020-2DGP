@@ -88,16 +88,40 @@ def move_character_6():
     while i < 10:
         clear_canvas_now()
         frame = (frame + 1) % 8
-        character.clip_draw(frame * 100, 0, 100, 100, x, y)
+        character.clip_draw(frame * 100, 100, 100, 100, x, y)
         update_canvas()
         x = x + x3
         y = y + y3
         i += 1
         delay(0.05)
 def move_character_7():
-    pass
+    x ,y= 510,92
+    frame = 0
+    x3,y3 = (692-510)/10 , (518-92)/10
+    i = 0
+    while i < 10:
+        clear_canvas_now()
+        frame = (frame + 1) % 8
+        character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        update_canvas()
+        x = x + x3
+        y = y + y3
+        i += 1
+        delay(0.05)
 def move_character_8():
-    pass
+    x ,y= 692,518
+    frame = 0
+    x3,y3 = (682-692)/10 , (336-518)/10
+    i = 0
+    while i < 10:
+        clear_canvas_now()
+        frame = (frame + 1) % 8
+        character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        update_canvas()
+        x = x + x3
+        y = y + y3
+        i += 1
+        delay(0.05)
 def move_character_9():
     pass
 def move_character_10():
@@ -110,9 +134,9 @@ while True:
     #move_character_2()
     #move_character_3()
     #move_character_4()
-    move_character_5()
-    move_character_6()
-    move_character_7()
+    #move_character_5()
+    #move_character_6()
+    #move_character_7()
     move_character_8()
     move_character_9()
     move_character_10()
