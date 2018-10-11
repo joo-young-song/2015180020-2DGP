@@ -4,13 +4,10 @@ import os
 
 from pico2d import *
 
-
-
 import game_framework
 
 import title_state
 import pause_state
-
 
 name = "MainState"
 
@@ -19,6 +16,7 @@ boy = None
 grass = None
 
 font = None
+
 
 class Grass:
     def __init__(self):
@@ -58,38 +56,28 @@ class Boy:
 
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
 
-def enter():
 
+def enter():
     global boy, grass
     boy = Boy()
     grass = Grass()
 
 
 def exit():
-
     global boy, grass
     del (boy)
     del (grass)
 
 
-
-
 def pause():
-
     pass
-
-
 
 
 def resume():
-
     pass
 
 
-
-
 def handle_events():
-
     events = get_events()
 
     for event in events:
@@ -104,17 +92,11 @@ def handle_events():
             game_framework.change_state(pause_state)
 
 
-
-
 def update():
-
     boy.update()
 
 
-
-
 def draw():
-
     clear_canvas()
 
     grass.draw()
@@ -122,8 +104,3 @@ def draw():
     boy.draw()
 
     update_canvas()
-
-
-
-
-

@@ -6,7 +6,6 @@ import main_state
 
 name = "PauseState"
 
-
 pause_screen = None
 
 
@@ -16,48 +15,33 @@ class Pause:
         self.frame = 0
 
     def draw(self):
-
-        if self.frame % 2 == 0:
-
+        if self.frame % 7 > 2:
             self.image.draw(400, 300)
 
     def update(self):
-
         self.frame += 1
 
 
 def enter():
-
     global pause_screen
 
     pause_screen = Pause()
 
 
-
-
 def exit():
     global pause_screen
-    del (pause_screen)
-
-
+    del pause_screen
 
 
 def pause():
-
     pass
-
-
 
 
 def resume():
-
     pass
 
 
-
-
 def handle_events():
-
     events = get_events()
 
     for event in events:
@@ -67,27 +51,16 @@ def handle_events():
             game_framework.quit()
 
         elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
-            game_framework.push_state(main_state)
-
-
+            game_framework.change_state(main_state)
 
 
 def update():
-
     pause_screen.update()
 
 
-
-
 def draw():
-
     clear_canvas()
 
     pause_screen.draw()
 
     update_canvas()
-
-
-
-
-
