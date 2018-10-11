@@ -15,11 +15,12 @@ class Pause:
         self.frame = 0
 
     def draw(self):
-        if self.frame % 7 > 2:
+        if self.frame % 30 > 10:
             self.image.draw(400, 300)
 
     def update(self):
         self.frame += 1
+        delay(0.01)
 
 
 def enter():
