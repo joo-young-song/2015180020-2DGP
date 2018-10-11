@@ -1,36 +1,14 @@
-from pico2d import *
-
+import pico2d
 import game_framework
-
 import main_state
-
 name = "PauseState"
 
 pause_screen = None
 
-boy = None
-
-grass = None
-
-class Boy:
-
-    def __init__(self):
-
-        self.x, self.y = 0, 90
-
-        self.frame = 0
-
-        self.image = load_image('run_animation.png')
-
-        self.dir = 1
-        
-    def draw(self):
-
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
 
 class Pause:
     def __init__(self):
-        self.image = load_image('pause.png')
+        self.image = pico2d.load_image('pause.png')
         self.frame = 0
 
     def draw(self):
@@ -39,7 +17,7 @@ class Pause:
 
     def update(self):
         self.frame += 1
-        delay(0.01)
+        pico2d.delay(0.01)
 
 
 def enter():
@@ -62,14 +40,14 @@ def resume():
 
 
 def handle_events():
-    events = get_events()
+    events = pico2d.get_events()
 
     for event in events:
 
-        if event.type == SDL_QUIT:
+        if event.type == pico2d.SDL_QUIT:
             game_framework.quit()
 
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
+        elif event.type == pico2d.SDL_KEYDOWN and event.key == pico2d.SDLK_p:
             game_framework.pop_state()
 
 
@@ -78,8 +56,8 @@ def update():
 
 
 def draw():
-    clear_canvas()
+    pico2d.clear_canvas()
 
     pause_screen.draw()
 
-    update_canvas()
+    pico2d.update_canvas()
