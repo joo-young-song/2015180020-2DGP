@@ -60,4 +60,8 @@ def draw():
 
     pause_screen.draw()
 
+    main_state.grass.draw()
+
+    main_state.boy.draw()
+
     pico2d.update_canvas()
