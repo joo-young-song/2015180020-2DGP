@@ -4,7 +4,7 @@ from ball import Ball
 import game_world
 
 # Boy Event
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, LEFT_SHIFT_DOWN, LEFT_SHIFT_UP = range(6)
+RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, LEFT_SHIFT_DOWN, LEFT_SHIFT_UP, RIGHT_SHIFT_DOWN, RIGHT_SHIFT_UP = range(8)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
@@ -12,7 +12,9 @@ key_event_table = {
     (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
     (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
     (SDL_KEYDOWN, SDLK_LSHIFT): LEFT_SHIFT_DOWN,
-    (SDL_KEYUP, SDLK_LSHIFT): LEFT_SHIFT_UP
+    (SDL_KEYUP, SDLK_LSHIFT): LEFT_SHIFT_UP,
+    (SDL_KEYDOWN, SDLK_RSHIFT): RIGHT_SHIFT_DOWN,
+    (SDL_KEYUP, SDLK_RSHIFT): RIGHT_SHIFT_UP
 
 }
 
@@ -101,7 +103,7 @@ class DashState:
         elif event == LEFT_UP:
             boy.velocity += 1
 
-        boy.dash_count = 20
+        boy.dash_count = 50
         boy.dash_speed = boy.velocity * 3
 
     @staticmethod
@@ -131,11 +133,11 @@ class DashState:
 
 next_state_table = {
     IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState, RIGHT_DOWN: RunState, LEFT_DOWN: RunState,
-                LEFT_SHIFT_DOWN : IdleState, LEFT_SHIFT_UP : IdleState},
+                LEFT_SHIFT_DOWN : IdleState, LEFT_SHIFT_UP : IdleState, RIGHT_SHIFT_DOWN : IdleState, RIGHT_SHIFT_UP: IdleState},
     RunState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
-               LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState},
+               LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState, RIGHT_SHIFT_DOWN : DashState, RIGHT_SHIFT_UP: RunState},
     DashState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: RunState, RIGHT_DOWN: RunState,
-                LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState}
+                LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState, RIGHT_SHIFT_DOWN : DashState, RIGHT_SHIFT_UP : RunState}
 
 }
 
@@ -151,7 +153,7 @@ class Boy:
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
-        self.dash_count = 20
+        self.dash_count = 50
         self.dash_speed = 0;
 
 
