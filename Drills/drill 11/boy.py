@@ -13,6 +13,7 @@ key_event_table = {
     (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
     (SDL_KEYDOWN, SDLK_LSHIFT): LEFT_SHIFT_DOWN,
     (SDL_KEYUP, SDLK_LSHIFT): LEFT_SHIFT_UP
+
 }
 
 
@@ -100,12 +101,12 @@ class DashState:
         elif event == LEFT_UP:
             boy.velocity += 1
 
+        boy.dash_count = 20
         boy.dash_speed = boy.velocity * 3
 
     @staticmethod
     def exit(boy, event):
-        if boy.dash_count == 0:
-            boy.add_event(RunState)
+        pass
 
     @staticmethod
     def do(boy):
@@ -113,6 +114,10 @@ class DashState:
         boy.dash_count -= 1
         boy.x += boy.dash_speed
         boy.x = clamp(25, boy.x, 1600 - 25)
+
+        if boy.dash_count == 0:
+            boy.add_event(LEFT_SHIFT_UP)
+
 
     @staticmethod
     def draw(boy):
@@ -126,11 +131,11 @@ class DashState:
 
 next_state_table = {
     IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState, RIGHT_DOWN: RunState, LEFT_DOWN: RunState,
-                LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState},
+                LEFT_SHIFT_DOWN : IdleState, LEFT_SHIFT_UP : IdleState},
     RunState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
                LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState},
-    DashState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
-                LEFT_SHIFT_DOWN: RunState, LEFT_SHIFT_UP: RunState}
+    DashState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: RunState, RIGHT_DOWN: RunState,
+                LEFT_SHIFT_DOWN: DashState, LEFT_SHIFT_UP: RunState}
 
 }
 
@@ -146,7 +151,7 @@ class Boy:
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
-        self.dash_count = 10
+        self.dash_count = 20
         self.dash_speed = 0;
 
 
