@@ -11,9 +11,9 @@ open_canvas()
 
 pig = None
 
-Grass = map_stage_2.Grass()
+Grass = map_stage_3.Grass()
 
-Tile = map_stage_2.Tile()
+Tile = map_stage_3.Tile()
 
 
 class enemy:
@@ -21,7 +21,7 @@ class enemy:
 
     def __init__(self):
         self.x = 0
-        self.y = 550
+        self.y = 50
         self.hp = 10
         self.radians = 0.0
         self.head = 0
@@ -36,14 +36,18 @@ class enemy:
         self.x = self.x + 5 * math.cos(self.radians)
         self.y = self.y + 5 * math.sin(self.radians)
 
-        if map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
+        if map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
             self.radians = 3.14
-        elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
+            self.reflect = "hv"
+        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
             self.radians = -1.57
-        elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
+            self.reflect = ''
+        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
             self.radians = 0
-        elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
+            self.reflect = ''
+        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
             self.radians = 1.57
+            self.reflect = ''
         delay(0.05)
 
     def draw(self):
