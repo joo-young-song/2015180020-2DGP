@@ -36,16 +36,16 @@ class enemy:
         self.y = self.y + 5 * math.sin(self.radians)
 
         if self.x + 50 * math.cos(self.radians) > 800:
-            pass
+            self.radians = self.radians - 1
         elif self.x + 50 * math.cos(self.radians) < 0:
-            pass
+            self.radians = self.radians - 1
         elif self.y + 50 * math.sin(self.radians) > 600:
-            pass
+            self.radians = self.radians - 1
         elif self.y + 50 * math.sin(self.radians) < 0:
-            pass
+            self.radians = self.radians - 1
         elif map_stage_2.tile_rotate[int((self.y + 50 * math.sin(self.radians)) // 50)][
             int((self.x + 50 * math.cos(self.radians)) // 50)] == 0:
-            pass
+            self.radians = self.radians - 1
 
         delay(0.05)
 
