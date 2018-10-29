@@ -241,9 +241,10 @@ class SleepState:
 
         if boy.ghost_y_spot < 100:
             boy.ghost_y_spot += 0.1
+            boy.timer = cur_time
         else :
             boy.ghost_radians = 0
-            boy.ghost_spin += SPIN_PER_TIME * game_framework.frame_time
+            boy.ghost_spin =SPIN_PER_TIME * (get_time() - cur_time)
 
         boy.opacity = random.randint(1, 100) / 100
 
