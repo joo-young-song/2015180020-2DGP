@@ -1,5 +1,7 @@
 import game_framework
 
+import random
+
 from pico2d import *
 
 from ball import Ball
@@ -94,7 +96,7 @@ class IdleState:
 
             boy.velocity += RUN_SPEED_PPS
 
-        boy.timer = 1000
+        boy.timer = cur_time
 
 
 
@@ -116,9 +118,7 @@ class IdleState:
 
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
 
-        boy.timer -= 1
-
-        if boy.timer == 0:
+        if get_time() - cur_time > 10:
 
             boy.add_event(SLEEP_TIMER)
 
@@ -234,26 +234,41 @@ class SleepState:
 
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
 
+        boy.ghost_radians = boy.ghost_radians - 0.006
 
+        if boy.ghost_y_spot < 100:
+            boy.ghost_y_spot += 0.1
+        else :
+            boy.ghost_radians = 0
+
+        boy.opacity = random.randint(1, 100) / 100
 
     @staticmethod
 
     def draw(boy):
 
         if boy.dir == 1:
+            boy.image.opacify(1)
 
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 3.141592 / 2, '', boy.x - 25, boy.y - 25, 100, 100)
+            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 3.141592 / 2, '', boy.x - 25, boy.y - 25,
+                                          100, 100)
 
         else:
-
+            boy.image.opacify(1)
             boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100, -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
 
 
+        if boy.ghost_y_spot < 100:
 
+            boy.image.opacify(boy.opacity)
 
+            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, boy.ghost_radians, '', boy.x + boy.ghost_x_spot, boy.y + boy.ghost_y_spot, 100, 100)
 
+        else :
+            boy.image.opacify(boy.opacity)
 
-
+            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, boy.ghost_radians, '',
+                                          boy.x + boy.ghost_x_spot, boy.y + boy.ghost_y_spot, 100, 100)
 
 
 
@@ -298,7 +313,13 @@ class Boy:
 
         self.cur_state.enter(self, None)
 
+        self.ghost_radians = 3.141592 / 2
 
+        self.opacity = random.randint(1, 100) / 100
+
+        self.ghost_x_spot = -25
+
+        self.ghost_y_spot = -25
 
 
 
