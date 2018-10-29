@@ -21,7 +21,7 @@ class enemy:
 
     def __init__(self):
         self.x = 0
-        self.y = 50
+        self.y = 350
         self.hp = 10
         self.radians = 0.0
         self.head = 0
