@@ -2,6 +2,8 @@ import game_framework
 
 import random
 
+import math
+
 from pico2d import *
 
 from ball import Ball
@@ -39,8 +41,9 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 
+TIME_PER_SPIN = 3.141592 * 4
 
-
+SPIN_PER_TIME = TIME_PER_SPIN
 
 
 
@@ -240,6 +243,7 @@ class SleepState:
             boy.ghost_y_spot += 0.1
         else :
             boy.ghost_radians = 0
+            boy.ghost_spin += SPIN_PER_TIME * game_framework.frame_time
 
         boy.opacity = random.randint(1, 100) / 100
 
@@ -262,13 +266,12 @@ class SleepState:
 
             boy.image.opacify(boy.opacity)
 
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, boy.ghost_radians, '', boy.x + boy.ghost_x_spot, boy.y + boy.ghost_y_spot, 100, 100)
+            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, boy.ghost_radians, '', boy.x - 25, boy.y + boy.ghost_y_spot, 100, 100)
 
         else :
             boy.image.opacify(boy.opacity)
 
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, boy.ghost_radians, '',
-                                          boy.x + boy.ghost_x_spot, boy.y + boy.ghost_y_spot, 100, 100)
+            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 0, '', boy.x - 25 + 100*math.sin(boy.ghost_spin), boy.y + 100*math.cos(boy.ghost_spin), 100, 100)
 
 
 
@@ -317,7 +320,7 @@ class Boy:
 
         self.opacity = random.randint(1, 100) / 100
 
-        self.ghost_x_spot = -25
+        self.ghost_spin = 0
 
         self.ghost_y_spot = -25
 
