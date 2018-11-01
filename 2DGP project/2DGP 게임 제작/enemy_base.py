@@ -4,6 +4,7 @@ import math
 import map_stage_1
 import map_stage_2
 import map_stage_3
+
 open_canvas()
 
 pig = None
