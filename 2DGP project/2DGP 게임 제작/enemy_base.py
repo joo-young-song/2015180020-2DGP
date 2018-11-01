@@ -4,9 +4,6 @@ import math
 import map_stage_1
 import map_stage_2
 import map_stage_3
-
-os.chdir('D:\\2DGM\\2DGP\\2015180020-2DGP\\2DGP project\\2주차 적구현')
-
 open_canvas()
 
 pig = None
