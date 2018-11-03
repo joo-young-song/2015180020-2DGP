@@ -21,6 +21,9 @@ class Grass:
     def __init__(self):
         self.image = load_image('grass 1.jpg')
 
+    def update(self):
+        pass
+
     def draw(self):
         for x in range(17):
             for y in range(14):
@@ -31,6 +34,9 @@ class Grass:
 class Tile:
     def __init__(self):
         self.image = load_image('tile 1.jpg')
+
+    def update(self):
+        pass
 
     def draw(self):
         for x in range(17):

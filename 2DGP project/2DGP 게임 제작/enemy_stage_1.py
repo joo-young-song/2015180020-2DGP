@@ -1,17 +1,17 @@
 from pico2d import *
-import os
+
 import math
+
 import map_stage_1
-import map_stage_2
-import map_stage_3
 
 open_canvas()
 
 pig = None
 
-Grass = map_stage_3.Grass()
+Grass = map_stage_1.Grass()
 
-Tile = map_stage_3.Tile()
+Tile = map_stage_1.Tile()
+
 
 
 class enemy:
@@ -19,7 +19,7 @@ class enemy:
 
     def __init__(self):
         self.x = 0
-        self.y = 350
+        self.y = 300
         self.hp = 10
         self.radians = 0.0
         self.head = 0
@@ -34,35 +34,19 @@ class enemy:
         self.x = self.x + 5 * math.cos(self.radians)
         self.y = self.y + 5 * math.sin(self.radians)
 
-        if map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
+        if map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
             self.radians = 3.14
             self.reflect = "hv"
-        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
+        elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
             self.radians = -1.57
             self.reflect = ''
-        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
+        elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
             self.radians = 0
             self.reflect = ''
-        elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
+        elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
             self.radians = 1.57
             self.reflect = ''
         delay(0.05)
 
     def draw(self):
         self.image.clip_composite_draw(0, 100 + 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
-
-
-pig = enemy()
-
-while True:
-    clear_canvas()
-
-    Grass.draw()
-
-    Tile.draw()
-
-    pig.draw()
-
-    pig.update()
-
-    update_canvas()

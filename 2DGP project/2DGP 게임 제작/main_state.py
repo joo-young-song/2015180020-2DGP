@@ -1,25 +1,27 @@
-import random
-import json
-import os
 
 from pico2d import *
 import game_framework
 import game_world
 
-from boy import Boy
-from grass import Grass
+from map_stage_1 import Tile
+from map_stage_1 import Grass
+from enemy_stage_1 import enemy
 
 
 name = "MainState"
 
-boy = None
+enemy_1 = None
 
 def enter():
-    global boy
-    boy = Boy()
+    global enemy_1
+
     grass = Grass()
+    tile = Tile()
+    enemy_1 = enemy()
+
     game_world.add_object(grass, 0)
-    game_world.add_object(boy, 1)
+    game_world.add_object(tile, 1)
+    game_world.add_object(enemy_1, 1)
 
 
 def exit():
@@ -40,8 +42,6 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.quit()
-        else:
-            boy.handle_event(event)
 
 
 def update():

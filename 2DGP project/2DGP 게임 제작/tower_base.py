@@ -15,15 +15,19 @@ class tower:
         self.attack_speed = 0
         self.reflect = ''
         self.attack = False
+        self.range = 300
         if tower.image is None:
             tower.image = load_image('white_tower.png')
 
-    def update(self):
+    def frame_update(self):
         if self.attack == False:
             self.frame = (self.frame + 1) % 4
         else:
             self.frame = (self.frame + 1) % 2
         delay(0.05)
+
+    def attack_round(self):
+        if math.sqrt((self.x - ))
 
     def draw(self):
         if self.attack == False:
