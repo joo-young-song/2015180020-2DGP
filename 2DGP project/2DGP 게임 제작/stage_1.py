@@ -8,20 +8,23 @@ from map_stage_1 import Grass
 from enemy_stage_1 import enemy
 
 
-name = "MainState"
+name = "Stage_1"
 
 enemy_1 = None
+
+count = 20
 
 def enter():
     global enemy_1
 
+    enemy_1 = [enemy(i * 30) for i in range(50)]
     grass = Grass()
     tile = Tile()
-    enemy_1 = enemy()
 
     game_world.add_object(grass, 0)
-    game_world.add_object(tile, 1)
-    game_world.add_object(enemy_1, 1)
+    game_world.add_object(tile, 0)
+    for pig in enemy_1 :
+        game_world.add_object(pig, 1)
 
 
 def exit():
@@ -47,6 +50,8 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+
+    delay(0.05)
     # fill here
 
 
@@ -55,9 +60,3 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
-
-
-
-
-
-
