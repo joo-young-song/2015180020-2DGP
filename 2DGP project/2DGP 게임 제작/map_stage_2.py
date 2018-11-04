@@ -1,7 +1,7 @@
 from pico2d import *
 
-tile_rotate = [[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-               [2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+tile_rotate = [[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
+               [2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
                [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -19,6 +19,9 @@ class Grass:
     def __init__(self):
         self.image = load_image('grass 1.jpg')
 
+    def update(self):
+        pass
+
     def draw(self):
         for x in range(16):
             for y in range(12):
@@ -29,6 +32,9 @@ class Grass:
 class Tile:
     def __init__(self):
         self.image = load_image('tile 1.jpg')
+
+    def update(self):
+        pass
 
     def draw(self):
         for x in range(16):

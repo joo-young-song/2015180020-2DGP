@@ -18,6 +18,10 @@ tile_rotate = [[3, 3, 5, 5, 5, 4, 0, 0, 0, 0, 3, 3, 5, 5, 5, 4],
 class Grass:
     def __init__(self):
         self.image = load_image('grass 1.jpg')
+
+    def update(self):
+        pass
+
     def draw(self):
         for x in range(16):
             for y in range(12):
@@ -27,6 +31,9 @@ class Grass:
 class Tile:
     def __init__(self):
         self.image = load_image('tile 1.jpg')
+    def update(self):
+        pass
+
     def draw(self):
         for x in range(16):
             for y in range(12):
