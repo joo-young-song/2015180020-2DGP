@@ -1,9 +1,4 @@
 from pico2d import *
-import game_world
-import game_framework
-
-from tower_base import tower
-
 
 class set:
     image = None
@@ -22,10 +17,7 @@ class set:
             if event.type == SDL_MOUSEMOTION:
                 self.x = event.x
                 self.y = 600 - 1 - event.y
-            elif event.type == SDL_KEYDOWN and event.type == SDL_MOUSEBUTTONDOWN :
-                white_tower = tower(self.x, self.y)
-                game_world.add_object(white_tower, 1)
-                game_framework.pop_state()
+
 
     def draw(self):
         self.image.clip_composite_draw(0, 0, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
