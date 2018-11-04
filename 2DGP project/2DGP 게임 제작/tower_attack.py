@@ -1,42 +1,26 @@
 from pico2d import *
 import game_world
 import math
-import map_stage_1
-import map_stage_2
-import map_stage_3
 
-class tower:
+class fire:
     image = None
 
-    def __init__(self, x = 0, y = 0):
+    def __init__(self, x = 0, y = 0, radians = 0.0):
         self.x = x
         self.y = y
-        self.radians = 0.0
-        self.frame = 0
-        self.attack_speed = 0
+        self.radians = radians
         self.reflect = ''
-        self.attack = False
-        self.range = 300
-        if tower.image is None:
-            tower.image = load_image('white_tower.png')
+        self.frame = 0
+        if fire.image is None:
+            fire.image = load_image('attack_1.png')
 
-    def frame_update(self):
-        if self.attack == False:
-            self.frame = (self.frame + 1) % 4
-        else:
-            self.frame = (self.frame + 1) % 2
-        delay(0.05)
+    def update(self):
+        self.x = self.x + 20*math.cos(self.radians)
+        self.y = self.y + 20 * math.sin(self.radians)
+        self.frame = (self.frame+1) % 3
 
-    def attack_range(self):
-        for enemy_object in game_world.all_objects():
-            if math.sqrt( (self.x - enemy_object.x) * (self.y - enemy_object.y) + (self.y - enemy_object.y) * (self.y - enemy_object.y) < self.range):
-                self.attack = True
 
     def draw(self):
-        if self.attack == False:
-            self.image.clip_composite_draw(0, 100 + 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
-
-        else :
-            self.image.clip_composite_draw(0, 100 + 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+        self.image.clip_composite_draw(0, 16 + 16 + self.frame, 16, 16, self.radians, self.reflect, self.x, self.y, 10, 10)
 
 

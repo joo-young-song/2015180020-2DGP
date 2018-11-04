@@ -1,6 +1,8 @@
 from pico2d import *
 import game_world
 import math
+import tower_attack
+
 class tower:
     image = None
 
@@ -17,15 +19,23 @@ class tower:
             tower.image = load_image('white_tower.png')
 
     def update(self):
+        if self.attack_speed > 0:
+            self.attack_speed -= 1
+
         if self.attack == False:
             self.frame = (self.frame + 1) % 4
         else:
             self.frame = (self.frame + 1) % 2
+            if self.frame == 1:
+                self.attack = False
+                self.attack_speed = 10
 
     def attack_range(self):
         for enemy_object in game_world.all_objects():
             if math.sqrt( (self.x - enemy_object.x) * (self.y - enemy_object.y) + (self.y - enemy_object.y) * (self.y - enemy_object.y) < self.range):
                 self.attack = True
+                self.frame = 1
+                tower_attack(self.x,self.y,self.radians)
 
     def draw(self):
         if self.attack == False:

@@ -9,6 +9,7 @@ from enemy_stage_1 import enemy
 from tower_base import tower
 
 
+
 name = "Stage_1"
 
 enemy_1 = None
@@ -21,13 +22,12 @@ def enter():
     enemy_1 = [enemy(i * 30) for i in range(50)]
     grass = Grass()
     tile = Tile()
-    white_tower = tower()
 
     game_world.add_object(grass, 0)
     game_world.add_object(tile, 0)
     for pig in enemy_1 :
         game_world.add_object(pig, 1)
-    game_world.add_object(white_tower, 1)
+
 
 
 def exit():
@@ -48,6 +48,9 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.quit()
+        elif event.type == SDL_MOUSEBUTTONDOWN:
+            white_tower = tower(event.x, 600-1-event.y)
+            game_world.add_object(white_tower, 1)
 
 
 def update():
