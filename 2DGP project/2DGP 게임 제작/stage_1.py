@@ -6,6 +6,7 @@ import game_world
 from map_stage_1 import Tile
 from map_stage_1 import Grass
 from enemy_stage_1 import enemy
+from tower_base import tower
 
 
 name = "Stage_1"
@@ -20,11 +21,13 @@ def enter():
     enemy_1 = [enemy(i * 30) for i in range(50)]
     grass = Grass()
     tile = Tile()
+    white_tower = tower()
 
     game_world.add_object(grass, 0)
     game_world.add_object(tile, 0)
     for pig in enemy_1 :
         game_world.add_object(pig, 1)
+    game_world.add_object(white_tower, 1)
 
 
 def exit():

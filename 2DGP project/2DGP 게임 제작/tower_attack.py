@@ -1,6 +1,10 @@
 from pico2d import *
 import game_world
 import math
+import map_stage_1
+import map_stage_2
+import map_stage_3
+
 class tower:
     image = None
 
@@ -16,11 +20,12 @@ class tower:
         if tower.image is None:
             tower.image = load_image('white_tower.png')
 
-    def update(self):
+    def frame_update(self):
         if self.attack == False:
             self.frame = (self.frame + 1) % 4
         else:
             self.frame = (self.frame + 1) % 2
+        delay(0.05)
 
     def attack_range(self):
         for enemy_object in game_world.all_objects():

@@ -4,6 +4,8 @@ import math
 
 import map_stage_1
 
+import game_world
+
 open_canvas()
 
 pig = None
@@ -43,6 +45,9 @@ class enemy:
                 elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
                     self.radians = 1.57
                     self.reflect = ''
+                elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 5:
+                    game_world.remove_object(self)
+
 
             else :
                 self.x = self.x + 5 * math.cos(self.radians)

@@ -1,6 +1,10 @@
 from pico2d import *
 import game_world
 import math
+import map_stage_1
+import map_stage_2
+import map_stage_3
+
 class tower:
     image = None
 

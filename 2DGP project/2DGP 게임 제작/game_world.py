@@ -26,3 +26,6 @@ def all_objects():
         for o in objects[i]:
             yield o
 
+def enemy_objects():
+    for o in objects[1]:
+        yield o
