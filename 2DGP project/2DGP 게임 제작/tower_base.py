@@ -35,8 +35,12 @@ class tower:
                     self.attack = True
 
             elif self.attack == True:
+                self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 2
+                if self.attack_speed < -9 :
+                    fire = tower_attack.fire(self.x, self.y, self.radians)
 
+                    game_world.add_object(fire, 2)
 
     def draw(self):
         if self.attack == False:
