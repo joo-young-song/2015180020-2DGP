@@ -5,6 +5,7 @@ import game_world
 
 from map_stage_1 import Tile
 from map_stage_1 import Grass
+from map_stage_1 import tile_rotate
 from enemy_stage_1 import enemy
 from tower_base import tower
 
@@ -53,15 +54,22 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
+
         elif event.type == SDL_MOUSEMOTION and tower_set == 1 and tower_have == 0:
-            white_tower = tower(event.x , 600 - 1 - event.y)
-            game_world.add_object(white_tower, 2)
-            tower_set = 0
-            tower_have = 1
+
+            if(tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
+                pass
+
+                #white_tower = tower(int(event.x // 50) * 50 + 25, int((600 - 1 - event.y) // 50) * 50 + 25, True)
+
+                #game_world.add_object(white_tower, 2)
+
         elif event.type == SDL_MOUSEBUTTONDOWN:
-            white_tower = tower(event.x, 600 - 1 - event.y, True)
-            game_world.add_object(white_tower, 0)
-            tower_have = 0
+            if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
+
+                white_tower = tower(int(event.x // 50) * 50 + 25, int((600 - 1 - event.y) // 50) * 50 + 25, True)
+
+                game_world.add_object(white_tower, 2)
 
         elif event.type == SDL_KEYDOWN and event.key == SDLK_F1 and tower_set == 0 and tower_have == 0:
             tower_set = 1
@@ -77,7 +85,7 @@ def update():
 
     for game_object in game_world.mouse_tower_object():
         game_object.update()
-    # fill here
+    delay(0.01)
 
 
 def draw():
