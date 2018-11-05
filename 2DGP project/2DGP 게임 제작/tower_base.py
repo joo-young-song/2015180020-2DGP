@@ -11,7 +11,7 @@ class tower:
         self.y = y
         self.radians = 0.0
         self.frame = 0
-        self.attack_speed = 0
+        self.attack_speed = 100
         self.reflect = ''
         self.attack = False
         self.set = set
@@ -28,13 +28,21 @@ class tower:
                     self.y = 600 - 1 - event.y
         elif self.set == True:
             if self.attack == False:
+                self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 4
+
+                if self.attack_speed < 0:
+                    self.attack = True
+
+            elif self.attack == True:
+                self.frame = (self.frame + 1) % 2
+
 
     def draw(self):
         if self.attack == False:
-            self.image.clip_composite_draw(0, 100 + 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(0, 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
 
         else :
-            self.image.clip_composite_draw(0, 100 + 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(0, 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
 
 
