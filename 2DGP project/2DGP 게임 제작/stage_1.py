@@ -58,7 +58,7 @@ def handle_events():
             game_world.add_object(white_tower, 2)
             tower_set = 0
             tower_have = 1
-        elif event.type == SDL_MOUSEBUTTONDOWN and event.key == SDL_BUTTON_LEFT:
+        elif event.type == SDL_MOUSEBUTTONDOWN:
             white_tower = tower(event.x, 600 - 1 - event.y, True)
             game_world.add_object(white_tower, 0)
             tower_have = 0
