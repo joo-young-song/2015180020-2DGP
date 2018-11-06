@@ -26,6 +26,8 @@ class enemy:
             enemy.image = load_image('stage1_pig1.png')
 
     def update(self):
+        if self.hp == 0:
+            game_world.remove_object(self)
         if self.count == 0 :
             if self.x > 0 :
                 self.frame = (self.frame + 1) % 7

@@ -18,7 +18,7 @@ class tower:
         self.reflect = ''
         self.attack = False
         self.set = set
-        self.range = 200
+        self.range = 100
         if tower.image is None:
             tower.image = load_image('white_tower.png')
 
@@ -31,9 +31,10 @@ class tower:
                     self.y = 600 - 1 - event.y
         elif self.set == True:
             for gets in stage_1.enemy_1:
-                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
-                    self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
-                    break
+                if gets.hp >= 0:
+                    if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
+                        self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
+                        break
 
             if self.attack == False:
                 self.attack_speed -= 1
