@@ -58,3 +58,6 @@ class enemy:
 
     def draw(self):
         self.image.clip_composite_draw(0, 100 + 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+
+    def get_bb(self):
+        return self.x, self.y

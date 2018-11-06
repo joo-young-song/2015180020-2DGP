@@ -2,11 +2,13 @@ from pico2d import *
 import game_world
 import math
 import tower_attack
+import stage_1
+
 
 class tower:
     image = None
 
-    def __init__(self, x = 0, y = 0, set = False):
+    def __init__(self, x=0, y=0, set=False):
         self.x = x
         self.y = y
         self.radians = 0.0
@@ -15,7 +17,7 @@ class tower:
         self.reflect = ''
         self.attack = False
         self.set = set
-        self.range = 300
+        self.range = 200
         if tower.image is None:
             tower.image = load_image('white_tower.png')
 
@@ -27,6 +29,11 @@ class tower:
                     self.x = event.x
                     self.y = 600 - 1 - event.y
         elif self.set == True:
+            for gets in stage_1.enemy_1:
+                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
+                    self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
+                    break
+
             if self.attack == False:
                 self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 4
@@ -37,16 +44,19 @@ class tower:
             elif self.attack == True:
                 self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 2
-                if self.attack_speed < -9 :
+                if self.attack_speed < -9:
                     fire = tower_attack.fire(self.x, self.y, self.radians)
 
                     game_world.add_object(fire, 2)
 
     def draw(self):
         if self.attack == False:
-            self.image.clip_composite_draw(0, 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(0, 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y,
+                                           100, 100)
 
-        else :
-            self.image.clip_composite_draw(0, 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+        else:
+            self.image.clip_composite_draw(0, 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x,
+                                           self.y, 100, 100)
 
-
+    def get_bb(self):
+        return self.x, self.y, self.range
