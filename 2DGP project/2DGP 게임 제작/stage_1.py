@@ -3,9 +3,8 @@ from pico2d import *
 import game_framework
 import game_world
 
-from map_stage_1 import Tile
-from map_stage_1 import Grass
-from map_stage_1 import tile_rotate
+from map_stage_1 import *
+
 from enemy_stage_1 import enemy
 from tower_base import tower
 
@@ -26,8 +25,10 @@ def enter():
     enemy_1 = [enemy(i * 30) for i in range(50)]
     grass = Grass()
     tile = Tile()
+    UI_LEFT = Ui_Tower()
 
     game_world.add_object(grass, 0)
+    game_world.add_object(UI_LEFT, 2)
     game_world.add_object(tile, 0)
     for pig in enemy_1 :
         game_world.add_object(pig, 1)

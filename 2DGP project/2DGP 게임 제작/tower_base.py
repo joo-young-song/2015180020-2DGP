@@ -34,7 +34,6 @@ class tower:
                 if gets.hp >= 0:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
                         self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
-                        print(self.radians)
                         self.attack_speed -= 1
                         break
 
