@@ -32,8 +32,8 @@ class enemy:
             if self.x > 0 :
                 self.frame = (self.frame + 1) % 7
 
-                self.x = self.x + 5 * math.cos(self.radians)
-                self.y = self.y + 5 * math.sin(self.radians)
+                self.x = self.x + 3 * math.cos(self.radians)
+                self.y = self.y + 3 * math.sin(self.radians)
 
                 if map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
                     self.radians = 3.14
@@ -59,7 +59,7 @@ class enemy:
             self.count -= 1
 
     def draw(self):
-        self.image.clip_composite_draw(0, 100 + 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+        self.image.clip_composite_draw(0, 50 + 50 * self.frame, 50, 50, self.radians, self.reflect, self.x, self.y, 50, 50)
 
     def get_bb(self):
         return self.x, self.y

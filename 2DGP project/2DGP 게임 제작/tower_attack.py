@@ -23,7 +23,7 @@ class fire:
             if gets.hp >= 0:
                 if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 70:
                     game_world.remove_object(self)
-                    gets.hp -= 1
+                    gets.hp -= 11
                     if gets.hp < 0:
                         game_world.remove_object(gets)
                     break

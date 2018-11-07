@@ -14,7 +14,7 @@ class tower:
         self.y = y
         self.radians = 0.0
         self.frame = 0
-        self.attack_speed = 100
+        self.attack_speed = 30
         self.reflect = ''
         self.attack = False
         self.set = set
@@ -34,10 +34,11 @@ class tower:
                 if gets.hp >= 0:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
                         self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
+                        print(self.radians)
+                        self.attack_speed -= 1
                         break
 
             if self.attack == False:
-                self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 4
 
                 if self.attack_speed < 0:
@@ -47,18 +48,23 @@ class tower:
                 self.attack_speed -= 1
                 self.frame = (self.frame + 1) % 2
                 if self.attack_speed < -9:
+
                     fire = tower_attack.fire(self.x, self.y, self.radians)
 
                     game_world.add_object(fire, 2)
 
+                    self.attack_speed = 30
+
+                    self.attack = False
+
     def draw(self):
         if self.attack == False:
-            self.image.clip_composite_draw(0, 100 * self.frame, 100, 100, self.radians, self.reflect, self.x, self.y,
-                                           100, 100)
+            self.image.clip_composite_draw(0, 50 * self.frame, 50, 50, self.radians, self.reflect, self.x, self.y,
+                                           50, 50)
 
         else:
-            self.image.clip_composite_draw(0, 100 * (self.frame + 4), 100, 100, self.radians, self.reflect, self.x,
-                                           self.y, 100, 100)
+            self.image.clip_composite_draw(0, 50 * (self.frame + 4), 50, 50, self.radians, self.reflect, self.x,
+                                           self.y, 50, 50)
 
     def get_bb(self):
         return self.x, self.y, self.range
