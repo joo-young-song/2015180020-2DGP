@@ -15,9 +15,9 @@ enemy_1 = None
 
 count = 20
 
-tower_set = 0
-
 tower_have = 0
+
+get_tower = None
 
 def enter():
     global enemy_1
@@ -48,33 +48,28 @@ def resume():
 
 def handle_events():
     events = get_events()
-    global tower_set
     global tower_have
+    global get_tower
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
 
-        elif event.type == SDL_MOUSEMOTION and tower_set == 1 and tower_have == 0:
-
-            if(tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
-                pass
-
-                #white_tower = tower(int(event.x // 50) * 50 + 25, int((600 - 1 - event.y) // 50) * 50 + 25, True)
-
-                #game_world.add_object(white_tower, 2)
-
         elif event.type == SDL_MOUSEBUTTONDOWN:
-            if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
+            if tower_have == 0:
+                if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
+                    tower_have = tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)]
+                    if tower_have == 8:
+                        get_tower = tower(event.x, 600 - 1 - event.y, False)
+                        game_world.add_object(get_tower, 2)
 
-                white_tower = tower(int(event.x // 50) * 50 + 25, int((600 - 1 - event.y) // 50) * 50 + 25, True)
-
-                game_world.add_object(white_tower, 2)
-
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_F1 and tower_set == 0 and tower_have == 0:
-            tower_set = 1
-
+            else:
+                if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
+                    get_tower.set = True
+                    get_tower.x = int(event.x // 50) * 50 + 25
+                    get_tower.y = int((600 - 1 - event.y) // 50) * 50 + 25
+                    tower_have = 0
 
 
 def update():
