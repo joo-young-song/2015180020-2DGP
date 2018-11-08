@@ -1,7 +1,7 @@
 from pico2d import *
 import game_world
 import math
-import white_attack
+import green_attack
 import stage_1
 
 
@@ -14,12 +14,13 @@ class tower_g:
         self.y = y
         self.radians = 0.0
         self.frame = 1
-        self.attack_speed = 100
+        self.attack_speed = 150
         self.lazer_attack_rate = 0
         self.reflect = ''
         self.attack = False
         self.set = set
         self.range = 500
+        self.lazer_list = {0, 1, 1, 1, 1, 1, 1, 1, 1, 2}
         if tower_g.image is None:
             tower_g.image = load_image('green_tower.png')
 
@@ -32,7 +33,7 @@ class tower_g:
                     self.y = 600 - 1 - event.y
         elif self.set == True:
             for gets in stage_1.enemy_1:
-                if gets.hp >= 0:
+                if gets.hp >= 0 and self.attack == False:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
                         self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
                         self.attack_speed -= 1
@@ -46,15 +47,16 @@ class tower_g:
 
             elif self.attack == True:
                 self.attack_speed -= 1
-                if self.attack_speed < -9:
+                if self.attack_speed < 0:
 
-                    fire = white_attack.fire(self.x, self.y, self.radians)
+                    get_attack = green_attack.fire(self.x, self.y, self.radians,1)
 
-                    game_world.add_object(fire, 2)
+                    game_world.add_object(get_attack, 2)
 
-                    self.attack_speed = 100
+                    if self.attack_speed < -10:
+                        self.attack_speed = 150
 
-                    self.attack = False
+                        self.attack = False
 
     def draw(self):
         if self.attack == False:
