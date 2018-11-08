@@ -6,7 +6,8 @@ import game_world
 from map_stage_1 import *
 
 from enemy_stage_1 import enemy
-from tower_base import tower
+from tower_white import tower_w
+from tower_green import tower_g
 
 
 name = "Stage_1"
@@ -61,9 +62,11 @@ def handle_events():
                 if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
                     tower_have = tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)]
                     if tower_have == 8:
-                        get_tower = tower(event.x, 600 - 1 - event.y, False)
+                        get_tower = tower_w(event.x, 600 - 1 - event.y, False)
                         game_world.add_object(get_tower, 2)
-
+                    elif tower_have == 10:
+                        get_tower = tower_g(event.x, 600 - 1 - event.y, False)
+                        game_world.add_object(get_tower, 2)
             else:
                 if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
                     get_tower.set = True

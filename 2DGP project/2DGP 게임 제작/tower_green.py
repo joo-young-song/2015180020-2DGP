@@ -1,26 +1,27 @@
 from pico2d import *
 import game_world
 import math
-import tower_attack
+import white_attack
 import stage_1
 
 
 
-class tower:
+class tower_g:
     image = None
 
     def __init__(self, x=0, y=0, set=False):
         self.x = x
         self.y = y
         self.radians = 0.0
-        self.frame = 0
-        self.attack_speed = 30
+        self.frame = 1
+        self.attack_speed = 100
+        self.lazer_attack_rate = 0
         self.reflect = ''
         self.attack = False
         self.set = set
-        self.range = 100
-        if tower.image is None:
-            tower.image = load_image('white_tower.png')
+        self.range = 500
+        if tower_g.image is None:
+            tower_g.image = load_image('green_tower.png')
 
     def update(self):
         if self.set == False:
@@ -38,21 +39,20 @@ class tower:
                         break
 
             if self.attack == False:
-                self.frame = (self.frame + 1) % 4
+                self.frame = (self.frame + 1) % 3 + 1
 
                 if self.attack_speed < 0:
                     self.attack = True
 
             elif self.attack == True:
                 self.attack_speed -= 1
-                self.frame = (self.frame + 1) % 2
                 if self.attack_speed < -9:
 
-                    fire = tower_attack.fire(self.x, self.y, self.radians)
+                    fire = white_attack.fire(self.x, self.y, self.radians)
 
                     game_world.add_object(fire, 2)
 
-                    self.attack_speed = 30
+                    self.attack_speed = 100
 
                     self.attack = False
 
@@ -62,7 +62,7 @@ class tower:
                                            50, 50)
 
         else:
-            self.image.clip_composite_draw(0, 50 * (self.frame + 4), 50, 50, self.radians, self.reflect, self.x,
+            self.image.clip_composite_draw(0, 0, 50, 50, self.radians, self.reflect, self.x,
                                            self.y, 50, 50)
 
     def get_bb(self):
