@@ -1,8 +1,8 @@
 import game_framework
 import pico2d
 
-import stage_1
+import start_state
 
-pico2d.open_canvas(1000, 600)
-game_framework.run(stage_1)
+pico2d.open_canvas(1000, 700)
+game_framework.run(start_state)
 pico2d.close_canvas()
