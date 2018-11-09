@@ -20,7 +20,7 @@ class tower_g:
         self.attack = False
         self.set = set
         self.range = 500
-        self.lazer_list = {0, 1, 1, 1, 1, 1, 1, 1, 1, 2}
+        self.lazer_list = [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]
         if tower_g.image is None:
             tower_g.image = load_image('green_tower.png')
 
@@ -32,7 +32,7 @@ class tower_g:
                     self.x = event.x
                     self.y = 600 - 1 - event.y
         elif self.set == True:
-            for gets in stage_1.enemy_1:
+            for gets in game_world.enemy_objects():
                 if gets.hp >= 0 and self.attack == False:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
                         self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
@@ -46,17 +46,25 @@ class tower_g:
                     self.attack = True
 
             elif self.attack == True:
-                self.attack_speed -= 1
                 if self.attack_speed < 0:
+                    for gets in game_world.enemy_objects():
+                        if gets.hp >= 0 and self.attack == False:
+                            if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
+                                self.radians = math.atan2((gets.y - self.y), (gets.x - self.x))
+                                break
 
-                    get_attack = green_attack.fire(self.x, self.y, self.radians,1)
 
-                    game_world.add_object(get_attack, 2)
+                    get_attack = green_attack.fire(self.x, self.y, self.radians,self.lazer_list[self.attack_speed])
+                    print(self.lazer_list[self.attack_speed])
 
-                    if self.attack_speed < -10:
+                    game_world.add_object(get_attack, 1)
+
+                    if self.attack_speed < -19:
                         self.attack_speed = 150
 
                         self.attack = False
+
+                    self.attack_speed -= 1
 
     def draw(self):
         if self.attack == False:

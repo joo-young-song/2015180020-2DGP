@@ -30,7 +30,7 @@ class tower_w:
                     self.x = event.x
                     self.y = 600 - 1 - event.y
         elif self.set == True:
-            for gets in stage_1.enemy_1:
+            for gets in game_world.enemy_objects():
                 if gets.hp >= 0:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
                         self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
@@ -50,7 +50,7 @@ class tower_w:
 
                     fire = white_attack.fire(self.x, self.y, self.radians)
 
-                    game_world.add_object(fire, 2)
+                    game_world.add_object(fire, 1)
 
                     self.attack_speed = 30
 

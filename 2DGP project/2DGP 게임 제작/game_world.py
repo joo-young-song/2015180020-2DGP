@@ -25,14 +25,11 @@ def all_objects():
             yield o
 
 def enemy_objects():
-    for o in objects[1]:
+    for o in objects[2]:
         yield o
 
 def other_objects():
     for o in objects[0]:
         yield o
 
-def mouse_tower_object():
-    for o in objects[2]:
-        yield o
 

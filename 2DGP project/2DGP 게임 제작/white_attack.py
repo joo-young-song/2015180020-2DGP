@@ -19,7 +19,7 @@ class fire:
         self.x = self.x + 10*math.cos(self.radians)
         self.y = self.y + 10*math.sin(self.radians)
         self.frame = (self.frame+1) % 3
-        for gets in stage_1.enemy_1:
+        for gets in game_world.enemy_objects():
             if gets.hp >= 0:
                 if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 40:
                     game_world.remove_object(self)
