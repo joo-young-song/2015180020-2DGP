@@ -14,11 +14,11 @@ class fire:
         self.radians = radians
         self.lazer_part = lazer_part
         if fire.lazer_start is None:
-            fire.lazer_start = load_image('lazer_start.png') # 36 92
+            fire.lazer_start = load_image('bullet_image//lazer_start.png') # 36 92
         if fire.lazer_middle is None:
-            fire.lazer_middle = load_image('lazer_middle.png') # 100 100
+            fire.lazer_middle = load_image('bullet_image//lazer_middle.png') # 100 100
         if fire.lazer_last is None:
-            fire.lazer_last = load_image('lazer_last.png') # w 48 h 100
+            fire.lazer_last = load_image('bullet_image//lazer_last.png') # w 48 h 100
 
     def update(self):
         self.x = self.x + 15*math.cos(self.radians)

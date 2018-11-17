@@ -18,7 +18,7 @@ class tower:
         self.attack = False
         self.range = 300
         if tower.image is None:
-            tower.image = load_image('white_tower.png')
+            tower.image = load_image('tower_image//white_tower.png')
 
     def update(self):
         if self.attack == False:

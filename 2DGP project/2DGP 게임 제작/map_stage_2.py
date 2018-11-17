@@ -17,7 +17,7 @@ tile_rotate = [[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
 
 class Grass:
     def __init__(self):
-        self.image = load_image('grass 1.jpg')
+        self.image = load_image('background_image//grass 1.jpg')
 
     def update(self):
         pass
@@ -31,7 +31,7 @@ class Grass:
 
 class Tile:
     def __init__(self):
-        self.image = load_image('tile 1.jpg')
+        self.image = load_image('background_image//tile 1.jpg')
 
     def update(self):
         pass

@@ -16,9 +16,9 @@ def enter():
     global image
     global image_stage_writting
     global image_white_blend
-    image = load_image('choice_stage_background.png')
+    image = load_image('background_image//choice_stage_background.png')
 
-    image_stage_writting = load_image('stage.png')
+    image_stage_writting = load_image('background_image//stage.png')
 
 
 def exit():

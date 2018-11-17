@@ -20,7 +20,7 @@ class tower_w:
         self.set = set
         self.range = 300
         if tower_w.image is None:
-            tower_w.image = load_image('white_tower.png')
+            tower_w.image = load_image('tower_image//white_tower.png')
 
     def update(self):
         if self.set == False:

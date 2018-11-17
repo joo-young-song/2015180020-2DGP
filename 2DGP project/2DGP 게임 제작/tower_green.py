@@ -22,7 +22,7 @@ class tower_g:
         self.range = 500
         self.lazer_list = [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]
         if tower_g.image is None:
-            tower_g.image = load_image('green_tower.png')
+            tower_g.image = load_image('tower_image//green_tower.png')
 
     def update(self):
         if self.set == False:

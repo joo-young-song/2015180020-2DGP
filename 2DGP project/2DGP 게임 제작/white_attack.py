@@ -13,7 +13,7 @@ class fire:
         self.reflect = ''
         self.frame = 0
         if fire.image is None:
-            fire.image = load_image('attack_1.png')
+            fire.image = load_image('bullet_image//attack_1.png')
 
     def update(self):
         self.x = self.x + 10*math.cos(self.radians)

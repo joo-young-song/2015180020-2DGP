@@ -17,7 +17,7 @@ tile_rotate = [[0, 0, 0, 3, 3, 3, 3, 3, 4, 0, 0, 3, 3, 3, 3, 5, 14, 14, 15, 15],
 
 class Grass:
     def __init__(self):
-        self.image = load_image('grass 1.jpg')
+        self.image = load_image('background_image//grass 1.jpg')
 
     def update(self):
         pass
@@ -31,7 +31,7 @@ class Grass:
 
 class Tile:
     def __init__(self):
-        self.image = load_image('tile 1.jpg')
+        self.image = load_image('background_image//tile 1.jpg')
 
     def update(self):
         pass
@@ -45,9 +45,9 @@ class Tile:
 
 class Ui_Tower:
     def __init__(self):
-        self.white_tower = load_image('white_tower_UI.png') # 875 ,450
-        self.red_tower = load_image('red_tower_UI.png') # 925, 450
-        self.green_tower = load_image('green_tower_UI.png') # 875, 350
+        self.white_tower = load_image('tower_image//white_tower_UI.png') # 875 ,450
+        self.red_tower = load_image('tower_image//red_tower_UI.png') # 925, 450
+        self.green_tower = load_image('tower_image//green_tower_UI.png') # 875, 350
     def update(self):
         pass
     def draw(self):

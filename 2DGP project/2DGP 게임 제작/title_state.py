@@ -9,7 +9,7 @@ image = None
 
 def enter():
     global image
-    image = load_image('title_image.jpg')
+    image = load_image('background_image//title_image.jpg')
 
 
 def exit():

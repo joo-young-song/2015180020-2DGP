@@ -9,7 +9,7 @@ class set:
         self.radians = 0
         self.reflect = ''
         if set.image is None:
-            set.image = load_image('white_tower.png')
+            set.image = load_image('tower_image//white_tower.png')
 
     def update(self):
         events = get_events()

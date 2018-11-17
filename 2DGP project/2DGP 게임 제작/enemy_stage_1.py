@@ -23,7 +23,7 @@ class enemy:
         self.reflect = ''
         self.count = show
         if enemy.image is None:
-            enemy.image = load_image('stage1_pig1.png')
+            enemy.image = load_image('enemy_image//stage1_pig1.png')
 
     def update(self):
         if self.hp == 0:
