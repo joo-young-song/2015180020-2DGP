@@ -28,7 +28,7 @@ class tower_w:
             for event in events:
                 if event.type == SDL_MOUSEMOTION:
                     self.x = event.x
-                    self.y = 600 - 1 - event.y
+                    self.y = 700 - 1 - event.y
         elif self.set == True:
             for gets in game_world.enemy_objects():
                 if gets.hp >= 0:

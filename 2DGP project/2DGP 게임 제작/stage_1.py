@@ -59,19 +59,19 @@ def handle_events():
 
         elif event.type == SDL_MOUSEBUTTONDOWN:
             if tower_have == 0:
-                if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
-                    tower_have = tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)]
+                if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
+                    tower_have = tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)]
                     if tower_have == 8:
-                        get_tower = tower_w(event.x, 600 - 1 - event.y, False)
+                        get_tower = tower_w(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                     elif tower_have == 10:
-                        get_tower = tower_g(event.x, 600 - 1 - event.y, False)
+                        get_tower = tower_g(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
             else:
-                if (tile_rotate[int((600 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
+                if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
                     get_tower.set = True
                     get_tower.x = int(event.x // 50) * 50 + 25
-                    get_tower.y = int((600 - 1 - event.y) // 50) * 50 + 25
+                    get_tower.y = int((700 - 1 - event.y) // 50) * 50 + 25
                     tower_have = 0
 
 
