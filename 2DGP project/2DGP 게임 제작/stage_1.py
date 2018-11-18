@@ -5,7 +5,7 @@ import game_world
 
 from map_stage_1 import *
 
-from enemy_stage_1_2 import enemy
+from enemy_stage_1_boss import enemy
 from tower_white import tower_w
 from tower_green import tower_g
 
