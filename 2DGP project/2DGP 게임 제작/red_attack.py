@@ -3,6 +3,7 @@ import stage_1
 import math
 import game_world
 import random
+import game_framework
 
 class fire:
     image = None
@@ -17,13 +18,13 @@ class fire:
             fire.image = load_image('bullet_image//ninja_bullet.png')
 
     def update(self):
-        self.x = self.x + 7*math.cos(self.radians)
-        self.y = self.y + 7*math.sin(self.radians)
+        self.x = self.x + 350*math.cos(self.radians)*game_framework.frame_time
+        self.y = self.y + 350*math.sin(self.radians)*game_framework.frame_time
         for gets in game_world.enemy_objects():
-            if gets.hp >= 0:
-                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 40:
+            if gets.hp >= 0 and gets.x > 0:
+                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 30:
                     game_world.remove_object(self)
-                    gets.hp -= self.bullet_color
+                    gets.hp -= self.bullet_color/10
                     if gets.hp < 0:
                         game_world.remove_object(gets)
                     break
