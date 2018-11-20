@@ -4,6 +4,7 @@ import math
 import game_world
 import random
 import game_framework
+import enemy_die
 
 class fire:
     image = None
@@ -26,6 +27,8 @@ class fire:
                     game_world.remove_object(self)
                     gets.hp -= self.bullet_color/10
                     if gets.hp < 0:
+                        die = enemy_die.die(gets.x, gets.y, 50, 50)
+                        game_world.add_object(die, 1)
                         game_world.remove_object(gets)
                     break
 

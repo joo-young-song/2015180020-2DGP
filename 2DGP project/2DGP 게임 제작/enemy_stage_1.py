@@ -8,8 +8,6 @@ import game_world
 
 import game_framework
 
-open_canvas()
-
 pig = None
 
 class enemy:
