@@ -24,7 +24,7 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i * 30) for i in range(50)]
+    enemy_1 = [enemy(i) for i in range(50)]
     grass = Grass()
     tile = Tile()
     UI_LEFT = Ui_Tower()
@@ -82,7 +82,6 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-    delay(0.01)
 
 
 

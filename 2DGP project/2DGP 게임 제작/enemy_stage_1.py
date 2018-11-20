@@ -6,6 +6,8 @@ import map_stage_1
 
 import game_world
 
+import game_framework
+
 open_canvas()
 
 pig = None
@@ -22,6 +24,7 @@ class enemy:
         self.frame = 0
         self.reflect = ''
         self.count = show
+        self.showtime = get_time()
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage1_pig1.png')
 
@@ -30,10 +33,10 @@ class enemy:
             game_world.remove_object(self)
         if self.count == 0 :
             if self.x > 0 :
-                self.frame = (self.frame + 1) % 7
+                self.frame = (self.frame + 14 * game_framework.frame_time) % 7
 
-                self.x = self.x + 3 * math.cos(self.radians)
-                self.y = self.y + 3 * math.sin(self.radians)
+                self.x = self.x + (100 * math.cos(self.radians)) * game_framework.frame_time
+                self.y = self.y + (100 * math.sin(self.radians)) * game_framework.frame_time
 
                 if map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
                     self.radians = 3.14
@@ -52,14 +55,15 @@ class enemy:
 
 
             else :
-                self.x = self.x + 5 * math.cos(self.radians)
-                self.y = self.y + 5 * math.sin(self.radians)
+                self.x = self.x + (100 * math.cos(self.radians)) * game_framework.frame_time
+                self.y = self.y + (100 * math.sin(self.radians)) * game_framework.frame_time
 
         else :
-            self.count -= 1
+            if self.count < get_time() - self.showtime:
+                self.count = 0
 
     def draw(self):
-        self.image.clip_composite_draw(0, 50 + 50 * self.frame, 50, 50, self.radians, self.reflect, self.x, self.y, 50, 50)
+        self.image.clip_composite_draw(0, 50 + 50 * int(self.frame), 50, 50, self.radians, self.reflect, self.x, self.y, 50, 50)
 
     def get_bb(self):
         return self.x, self.y
