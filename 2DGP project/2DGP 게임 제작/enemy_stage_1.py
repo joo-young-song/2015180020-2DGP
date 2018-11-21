@@ -8,7 +8,7 @@ import game_world
 
 import game_framework
 
-pig = None
+import enemy_die
 
 class enemy:
     image = None
@@ -27,8 +27,10 @@ class enemy:
             enemy.image = load_image('enemy_image//stage1_pig1.png')
 
     def update(self):
-        if self.hp == 0:
+        if self.hp < 0:
             game_world.remove_object(self)
+            die = enemy_die.die(self.x,self.y,50,50)
+            game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
                 self.frame = (self.frame + 14 * game_framework.frame_time) % 7

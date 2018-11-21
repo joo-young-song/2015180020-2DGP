@@ -1,9 +1,7 @@
 from pico2d import *
-import stage_1
 import math
 import game_world
 import game_framework
-import enemy_die
 
 class fire:
     lazer_start = None
@@ -30,13 +28,9 @@ class fire:
             self.y = self.y + 400*math.sin(self.radians)*game_framework.frame_time
             for gets in game_world.enemy_objects():
                 if gets.hp >= 0:
-                    if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 30:
+                    if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < 40:
                         game_world.remove_object(self)
                         gets.hp -= 3
-                        if gets.hp < 0:
-                            die = enemy_die.die(gets.x, gets.y, 50, 50)
-                            game_world.add_object(die,1)
-                            game_world.remove_object(gets)
                         break
         else:
             if self.count < get_time() - self.showtime:
