@@ -41,10 +41,10 @@ class fire:
     def draw(self):
         if self.count == 0:
             if self.lazer_part == 0:
-                self.lazer_start.clip_composite_draw(0, 0, 36, 92, self.radians, 'hv', self.x, self.y, 18, 50)
+                self.lazer_start.clip_composite_draw(0, 0, 36, 92, self.radians, 'hv', self.x, self.y, 23, 50)
             elif self.lazer_part == 1:
-                self.lazer_middle.clip_composite_draw(0, 0, 100, 100, self.radians, '', self.x, self.y, 25, 50)
+                self.lazer_middle.clip_composite_draw(0, 0, 100, 100, self.radians, '', self.x, self.y, 27, 50)
             elif self.lazer_part == 2:
-                self.lazer_last.clip_composite_draw(0, 0, 48, 100, self.radians, 'hv', self.x, self.y, 24, 50)
+                self.lazer_last.clip_composite_draw(0, 0, 48, 100, self.radians, 'hv', self.x, self.y, 25, 50)
 
 
