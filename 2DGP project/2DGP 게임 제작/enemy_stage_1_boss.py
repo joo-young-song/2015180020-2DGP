@@ -32,6 +32,7 @@ class enemy:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,100,100)
             game_world.add_object(die, 1)
+            game_framework.change_state(stage_2)
         if self.count == 0 :
             if self.x > 0 :
                 self.frame = (self.frame + 8 * game_framework.frame_time) % 4
