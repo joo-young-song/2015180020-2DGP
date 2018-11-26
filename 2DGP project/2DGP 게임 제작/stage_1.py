@@ -18,8 +18,6 @@ enemy_1 = None
 
 count = 20
 
-money = 100
-
 tower_have = 0
 
 get_tower = None
@@ -57,7 +55,6 @@ def handle_events():
     events = get_events()
     global tower_have
     global get_tower
-    global money
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
@@ -68,18 +65,18 @@ def handle_events():
             if tower_have == 0:
                 if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
                     tower_have = tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)]
-                    if tower_have == 8 and money - 50 > 0:
+                    if tower_have == 8 and game_framework.GameState.money - 50 >= 0:
                         get_tower = tower_w(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
-                        money -= 50
-                    elif tower_have == 9 and money - 100 > 0:
+                        game_framework.GameState.money -= 50
+                    elif tower_have == 9 and game_framework.GameState.money - 100 >= 0:
                         get_tower = tower_r(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
-                        money -= 100
-                    elif tower_have == 10 and money - 150 > 0:
+                        game_framework.GameState.money -= 100
+                    elif tower_have == 10 and game_framework.GameState.money - 150 >= 0:
                         get_tower = tower_g(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
-                        money -= 150
+                        game_framework.GameState.money -= 150
                     else :
                         tower_have = 0
             else:
@@ -89,7 +86,7 @@ def handle_events():
                     get_tower.y = int((700 - 1 - event.y) // 50) * 50 + 25
                     tower_have = 0
                 elif tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] == 12 :
-                    money += (tower_have - 7) * 50
+                    game_framework.GameState.money += (tower_have - 7) * 50
                     game_world.remove_object(get_tower)
                     tower_have = 0
 
@@ -105,4 +102,7 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
+    font = load_font('ENCR10B.TTF', 20)
+    font.draw(925, 550, '%d' % game_framework.GameState.money, (120, 120, 0))
+
     update_canvas()

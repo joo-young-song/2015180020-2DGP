@@ -1,5 +1,6 @@
 from pico2d import *
 
+
 tile_rotate = [[0, 0, 0, 3, 3, 3, 3, 3, 4, 0, 0, 3, 3, 3, 3, 5, 14, 14, 15, 15],
                [0, 0, 0, 2, 2, 3, 3, 3, 4, 0, 0, 2, 2, 3, 3, 5, 14, 14, 15, 15],
                [0, 0, 0, 2, 2, 0, 0, 4, 4, 0, 0, 2, 2, 0, 0, 0, 12, 12, 12, 12],
@@ -58,7 +59,7 @@ class Ui_Tower:
 class Ui_Button:
     def __init__(self):
         self.undo_button = load_image('background_image//undo.png') # 140 140 900 550
-        self.undo_button_2 = load_image('background_image//undo2.png') # 140 140
+        #self.undo_button_2 = load_image('background_image//undo2.png') # 140 140
         self.money_image = load_image('background_image//money.png') # 400 400 850 500
         pass
 
@@ -67,5 +68,4 @@ class Ui_Button:
 
     def draw(self):
         self.undo_button.draw(900, 200)
-        #self.undo_button2.draw(950, 450)
         self.money_image.draw(850, 550)

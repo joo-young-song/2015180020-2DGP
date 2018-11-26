@@ -31,7 +31,7 @@ class enemy:
         if self.hp < 0:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,50,50)
-            map_stage_1.money += 10
+            game_framework.GameState.money += 10
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
