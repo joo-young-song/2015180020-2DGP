@@ -1,7 +1,7 @@
 import game_framework
 import game_world
 
-from map_stage_1 import *
+from map_stage_2 import *
 
 from enemy_stage_1 import enemy
 from enemy_stage_1_2 import enemy as enemy_2
@@ -12,7 +12,7 @@ from tower_green import tower_g
 from tower_red import tower_r
 
 
-name = "Stage_1"
+name = "Stage_2"
 
 enemy_1 = None
 
