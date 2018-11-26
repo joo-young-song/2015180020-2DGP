@@ -10,6 +10,8 @@ import game_framework
 
 import enemy_die
 
+import stage_2
+
 class enemy:
     image = None
 
