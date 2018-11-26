@@ -23,6 +23,7 @@ class enemy:
         self.reflect = ''
         self.count = show
         self.showtime = get_time()
+        self.size = 50
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage1_pig1.png')
 
@@ -63,7 +64,7 @@ class enemy:
                 self.count = 0
 
     def draw(self):
-        self.image.clip_composite_draw(0, 50 + 50 * int(self.frame), 50, 50, self.radians, self.reflect, self.x, self.y, 50, 50)
+        self.image.clip_composite_draw(0, 50 + 50 * int(self.frame), 50, 50, self.radians, self.reflect, self.x, self.y,  self.size,  self.size)
 
     def get_bb(self):
         return self.x, self.y

@@ -23,6 +23,7 @@ class enemy:
         self.reflect = ''
         self.count = show
         self.showtime = get_time()
+        self.size = 100
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage1_boss.png')
 
@@ -33,7 +34,7 @@ class enemy:
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
-                self.frame = (self.frame + 8 * game_framework.frame_time) % 5
+                self.frame = (self.frame + 8 * game_framework.frame_time) % 4
 
                 self.x = self.x + (50 * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (50 * math.sin(self.radians)) * game_framework.frame_time
@@ -66,9 +67,9 @@ class enemy:
 
     def draw(self):
         if self.hp > 200:
-            self.image.clip_composite_draw(0, 100 * int(self.frame), 90, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(0, 100 * int(self.frame), 90, 100, self.radians, self.reflect, self.x, self.y,  self.size,  self.size)
         else:
-            self.image.clip_composite_draw(90, 100 * int(self.frame), 180, 100, self.radians, self.reflect, self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(90, 100 * int(self.frame), 180, 100, self.radians, self.reflect, self.x, self.y,  self.size,  self.size)
 
     def get_bb(self):
         return self.x, self.y
