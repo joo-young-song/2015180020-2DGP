@@ -29,9 +29,11 @@ def enter():
     grass = Grass()
     tile = Tile()
     UI_LEFT = Ui_Tower()
+    UI_BUTTON = Ui_Button()
 
     game_world.add_object(grass, 0)
     game_world.add_object(UI_LEFT, 1)
+    game_world.add_object(UI_BUTTON,1)
     game_world.add_object(tile, 0)
     for pig in enemy_1 :
         game_world.add_object(pig, 2)
