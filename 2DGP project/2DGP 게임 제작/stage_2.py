@@ -32,8 +32,9 @@ def enter():
 
     UI_LEFT = Ui_Tower()
     UI_BUTTON = Ui_Button()
+    UI_BACK = Ui_Back()
 
-
+    game_world.add_object(UI_BACK, 0)
     game_world.add_object(grass, 0)
     game_world.add_object(tile, 0)
     game_world.add_object(UI_LEFT, 1)
@@ -108,5 +109,5 @@ def draw():
         game_object.draw()
 
     font = load_font('ENCR10B.TTF', 20)
-    font.draw(925, 650, '%d' % game_framework.GameState.money, (120, 120, 0))
+    font.draw(925, 650, '%d' % game_framework.GameState.money, (255, 255, 255))
     update_canvas()

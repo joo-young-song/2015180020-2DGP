@@ -63,6 +63,15 @@ class Ui_Tower:
         font.draw(875, 375, '150', (255, 255, 255))
 
 
+class Ui_Back:
+    def __init__(self):
+        self.back = load_image('background_image//wood_ui.png') # 140 140 900 550
+        pass
+    def update(self):
+        pass
+
+    def draw(self):
+        self.back.draw(900, 350)
 
 class Ui_Button:
     def __init__(self):

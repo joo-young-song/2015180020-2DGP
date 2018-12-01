@@ -44,6 +44,16 @@ class Tile:
                 if tile_rotate[y][x] != 0:
                     self.image.rotate_draw(0, x * 50 + 25, y * 50 + 25, 50, 50)
 
+class Ui_Back:
+    def __init__(self):
+        self.back = load_image('background_image//wood_ui.png') # 140 140 900 550
+        pass
+    def update(self):
+        pass
+
+    def draw(self):
+        self.back.draw(900, 350)
+
 class Ui_Tower:
     def __init__(self):
         self.poison_tower = load_image('tower_image//poison_tower_UI.png') # 875 ,450
