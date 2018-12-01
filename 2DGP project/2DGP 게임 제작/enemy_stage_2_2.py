@@ -104,9 +104,9 @@ class enemy:
                                        self.size, self.size)
 
         if self.poison_condition > 0:
-            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, '', self.x - 5 , self.y + 14,
+            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, self.reflect, self.x - 5 + 19 * math.sin(self.radians + 3.141592) , self.y + -5 + abs(19 * math.cos(self.radians)),
                                       16, 16)
 
         if self.ice_condition > 0:
-            self.ice_image.clip_composite_draw(0, 16 * int(self.ice_frame), 16, 16, self.radians, '', self.x + 5, self.y + 14,
+            self.ice_image.clip_composite_draw(0, 16 * int(self.ice_frame), 16, 16, self.radians, self.reflect,self.x + 5 + 19 * math.sin(self.radians + 3.141592) , self.y + -5 + abs(19 * math.cos(self.radians)),
                                       16, 16)
