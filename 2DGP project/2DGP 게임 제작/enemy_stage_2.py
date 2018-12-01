@@ -80,5 +80,5 @@ class enemy:
         self.image.clip_composite_draw(120 * int(self.frame), 0, 120, 106, self.radians, self.reflect, self.x, self.y,
                                        self.size, self.size)
         if self.poison_condition > 0:
-            self.poison_condition.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, self.reflect, self.x, self.y + 10,
+            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, self.reflect, self.x, self.y + 10,
                                       16, 16)

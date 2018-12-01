@@ -38,7 +38,7 @@ class enemy:
             if self.poison_condition < self.count < get_time() - self.poison_time:
                 self.poison_condition = 0
             else:
-                self.hp -= 1
+                self.hp -= 0.03
                 self.poison_frame = get_time() - self.poison_time
 
         if self.hp < 0:
@@ -81,5 +81,5 @@ class enemy:
                                        self.size, self.size)
 
         if self.poison_condition > 0:
-            self.poison_condition.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, '', self.x, self.y + 10,
+            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, '', self.x, self.y + 10,
                                       16, 16)

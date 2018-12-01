@@ -47,7 +47,7 @@ class tower_p:
                 if self.attack_speed < get_time() - self.shottime:
                     fire = [poison_attack.fire(self.x, self.y, (3.141592/4) * i) for i in range(8) ]
                     for fires in fire :
-                        game_world.add_object(fires, 1)
+                        game_world.add_object(fires, 0)
                     self.shottime = get_time()
             else:
                 self.frame = (self.frame + 6 * game_framework.frame_time) % 3
