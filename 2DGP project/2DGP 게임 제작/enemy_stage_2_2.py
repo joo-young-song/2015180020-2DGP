@@ -39,7 +39,9 @@ class enemy:
                 self.poison_condition = 0
             else:
                 self.hp -= 0.03
-                self.poison_frame = get_time() - self.poison_time
+                self.poison_frame = (get_time() - self.poison_time)*2
+                if self.poison_frame > 6.9:
+                    self.poison_condition = 0
 
         if self.hp < 0:
             game_world.remove_object(self)
