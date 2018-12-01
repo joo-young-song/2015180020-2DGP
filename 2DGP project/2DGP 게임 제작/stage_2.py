@@ -8,7 +8,7 @@ from enemy_stage_2_2 import enemy as enemy_2
 from enemy_stage_1_boss import enemy as enemy_3
 
 from tower_white import tower_w
-from tower_green import tower_g
+from tower_ice import tower_i
 from tower_poison import tower_p
 
 
@@ -71,7 +71,7 @@ def handle_events():
                         get_tower = tower_p(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                     elif tower_have == 9:
-                        get_tower = tower_p(event.x, 700 - 1 - event.y, False)
+                        get_tower = tower_i(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                     elif tower_have == 10:
                         get_tower = tower_p(event.x, 700 - 1 - event.y, False)

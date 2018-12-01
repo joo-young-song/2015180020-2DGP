@@ -50,12 +50,12 @@ class tower_p:
                         game_world.add_object(fires, 0)
                     self.shottime = get_time()
             else:
-                self.frame = (self.frame + 6 * game_framework.frame_time) % 3
+                self.frame = (self.frame + 8 * game_framework.frame_time) % 4
 
 
     def draw(self):
         if self.attack == False:
-            self.image.clip_composite_draw(0, 122 * int(self.frame + 2), 125, 122, self.radians, self.reflect, self.x, self.y,
+            self.image.clip_composite_draw(0, 122 * int(self.frame ), 125, 122, self.radians, self.reflect, self.x, self.y,
                                            50, 50)
         else :
             self.image.clip_composite_draw(0, 488 + 122 * int(self.frame), 125, 122, self.radians, self.reflect, self.x, self.y,
