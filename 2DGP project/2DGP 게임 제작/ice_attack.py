@@ -25,7 +25,7 @@ class fire:
             game_world.remove_object(self)
         for gets in game_world.enemy_objects():
             if gets.hp >= 0 and gets.x > 0:
-                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size :
+                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size + 20:
                     gets.ice_condition = 8
                     gets.ice_time = get_time()
                     break

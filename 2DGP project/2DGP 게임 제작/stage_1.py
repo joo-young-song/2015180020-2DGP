@@ -90,6 +90,10 @@ def handle_events():
                     game_world.remove_object(get_tower)
                     tower_have = 0
 
+        elif event.type == SDL_MOUSEMOTION:
+            if tower_have != 0:
+                get_tower.x = event.x
+                get_tower.y = 700 - 1 - event.y
 
 
 def update():
@@ -103,6 +107,6 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
     font = load_font('ENCR10B.TTF', 20)
-    font.draw(925, 550, '%d' % game_framework.GameState.money, (120, 120, 0))
+    font.draw(925, 650, '%d' % game_framework.GameState.money, (120, 120, 0))
 
     update_canvas()

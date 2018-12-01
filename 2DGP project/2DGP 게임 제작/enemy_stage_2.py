@@ -13,11 +13,12 @@ import enemy_die
 class enemy:
     image = None
     poison_image = None
-
+    ice_image = None
     def __init__(self, show = 0):
+        self.speed = 100
         self.x = -100
         self.y = 650.0
-        self.hp = 10
+        self.hp = 100
         self.radians = 0.0
         self.head = 0
         self.frame = 0
@@ -25,33 +26,53 @@ class enemy:
         self.count = show
         self.showtime = get_time()
         self.size = 50
+
         self.poison_time = 0
         self.poison_condition = 0
         self.poison_frame = 0
+
+        self.ice_time = 0
+        self.ice_condition = 0
+        self.ice_frame = 0
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage2_pig1.png')
         if enemy.poison_image is None:
             enemy.poison_image = load_image('enemy_image//poison_condition.png')
+        if enemy.ice_image is None:
+            enemy.ice_image = load_image('enemy_image//ice_condition.png')
 
     def update(self):
+        if self.ice_condition > 0:
+            if self.ice_condition < self.count < get_time() - self.ice_time:
+                self.ice_condition = 0
+                self.speed = 100
+            else:
+                self.speed = 50
+                self.ice_frame = (get_time() - self.ice_time)
+                if self.ice_frame > 6.9:
+                    self.ice_condition = 0
+                    self.speed = 100
+
         if self.poison_condition > 0:
             if self.poison_condition < self.count < get_time() - self.poison_time:
                 self.poison_condition = 0
-            else :
-                self.hp -= 1
-                self.poison_frame = get_time() - self.poison_time
+            else:
+                self.hp -= 0.1
+                self.poison_frame = (get_time() - self.poison_time)*2
+                if self.poison_frame > 6.9:
+                    self.poison_condition = 0
 
         if self.hp < 0:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,50,50)
-            game_framework.GameState.money += 20
+            game_framework.GameState.money += 4
             game_world.add_object(die, 1)
-
+        if self.count == 0 :
             if self.x > 0 :
                 self.frame = (self.frame + 12 * game_framework.frame_time) % 6
 
-                self.x = self.x + (100 * math.cos(self.radians)) * game_framework.frame_time
-                self.y = self.y + (100 * math.sin(self.radians)) * game_framework.frame_time
+                self.x = self.x + (self.speed * math.cos(self.radians)) * game_framework.frame_time
+                self.y = self.y + (self.speed * math.sin(self.radians)) * game_framework.frame_time
 
                 if map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
                     self.radians = 3.14
@@ -70,8 +91,8 @@ class enemy:
 
 
             else :
-                self.x = self.x + (100 * math.cos(self.radians)) * game_framework.frame_time
-                self.y = self.y + (100 * math.sin(self.radians)) * game_framework.frame_time
+                self.x = self.x + (self.speed  * math.cos(self.radians)) * game_framework.frame_time
+                self.y = self.y + (self.speed  * math.sin(self.radians)) * game_framework.frame_time
         else :
             if self.count < get_time() - self.showtime:
                 self.count = 0
@@ -79,6 +100,11 @@ class enemy:
     def draw(self):
         self.image.clip_composite_draw(120 * int(self.frame), 0, 120, 106, self.radians, self.reflect, self.x, self.y,
                                        self.size, self.size)
+
         if self.poison_condition > 0:
-            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, self.reflect, self.x, self.y + 10,
+            self.poison_image.clip_composite_draw(0, 16 * int(self.poison_frame), 16, 16, self.radians, '', self.x - 5 , self.y + 14,
+                                      16, 16)
+
+        if self.ice_condition > 0:
+            self.ice_image.clip_composite_draw(0, 16 * int(self.ice_frame), 16, 16, self.radians, '', self.x + 5, self.y + 14,
                                       16, 16)

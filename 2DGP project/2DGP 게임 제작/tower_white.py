@@ -27,11 +27,6 @@ class tower_w:
     def update(self):
         if self.set == False:
             self.frame = (self.frame + 8 * game_framework.frame_time) % 4
-            events = get_events()
-            for event in events:
-                if event.type == SDL_MOUSEMOTION:
-                    self.x = event.x
-                    self.y = 700 - 1 - event.y
         elif self.set == True:
             self.attack = False
             for gets in game_world.enemy_objects():

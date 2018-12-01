@@ -46,6 +46,7 @@ class enemy:
             if self.ice_condition < self.count < get_time() - self.ice_time:
                 self.ice_condition = 0
                 self.speed = 100
+
             else:
                 self.speed = 50
                 self.ice_frame = (get_time() - self.ice_time)
@@ -57,7 +58,7 @@ class enemy:
             if self.poison_condition < self.count < get_time() - self.poison_time:
                 self.poison_condition = 0
             else:
-                self.hp -= 0.03
+                self.hp -= 0.1
                 self.poison_frame = (get_time() - self.poison_time)*2
                 if self.poison_frame > 6.9:
                     self.poison_condition = 0
@@ -65,8 +66,9 @@ class enemy:
         if self.hp < 0:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,50,50)
-            game_framework.GameState.money += 40
+            game_framework.GameState.money += 5
             game_world.add_object(die, 1)
+
         if self.count == 0 :
             if self.x > 0 :
                 self.frame = (self.frame + 12 * game_framework.frame_time) % 6
@@ -91,8 +93,8 @@ class enemy:
 
 
             else :
-                self.x = self.x + (100 * math.cos(self.radians)) * game_framework.frame_time
-                self.y = self.y + (100 * math.sin(self.radians)) * game_framework.frame_time
+                self.x = self.x + (self.speed  * math.cos(self.radians)) * game_framework.frame_time
+                self.y = self.y + (self.speed  * math.sin(self.radians)) * game_framework.frame_time
         else :
             if self.count < get_time() - self.showtime:
                 self.count = 0
