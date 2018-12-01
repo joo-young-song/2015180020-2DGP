@@ -28,7 +28,6 @@ class fire:
                 if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size + 20:
                     gets.ice_condition = 8
                     gets.ice_time = get_time()
-                    break
 
     def draw(self):
         self.image.clip_composite_draw(0, 158 * int(self.frame), 158, 158, self.radians, self.reflect, self.x, self.y, 80, 80)
