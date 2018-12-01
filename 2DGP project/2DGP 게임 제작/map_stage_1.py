@@ -69,5 +69,5 @@ class Ui_Button:
         pass
 
     def draw(self):
-        self.undo_button.draw(900, 200)
-        self.money_image.draw(850, 550)
+        self.undo_button.draw(900, 100)
+        self.money_image.draw(850, 650)

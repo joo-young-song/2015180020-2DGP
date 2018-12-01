@@ -16,7 +16,7 @@ class enemy:
     def __init__(self, show = 0):
         self.x = -100
         self.y = 650.0
-        self.hp = 10
+        self.hp = 200
         self.radians = 0.0
         self.head = 0
         self.frame = 0
@@ -25,13 +25,13 @@ class enemy:
         self.showtime = get_time()
         self.size = 50
         if enemy.image is None:
-            enemy.image = load_image('enemy_image//stage2_pig1.png')
+            enemy.image = load_image('enemy_image//stage2_pig2.png')
 
     def update(self):
         if self.hp < 0:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,50,50)
-            game_framework.GameState.money += 20
+            game_framework.GameState.money += 40
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
@@ -64,5 +64,5 @@ class enemy:
                 self.count = 0
 
     def draw(self):
-        self.image.clip_composite_draw(120 * int(self.frame), 0, 120, 106, self.radians, self.reflect, self.x, self.y,
+        self.image.clip_composite_draw(0, 88 * int(self.frame), 113, 88, self.radians, self.reflect, self.x, self.y,
                                        self.size, self.size)

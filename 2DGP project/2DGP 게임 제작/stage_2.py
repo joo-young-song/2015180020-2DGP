@@ -3,13 +3,13 @@ import game_world
 
 from map_stage_2 import *
 
-from enemy_stage_1 import enemy
-from enemy_stage_1_2 import enemy as enemy_2
+from enemy_stage_2 import enemy
+from enemy_stage_2_2 import enemy as enemy_2
 from enemy_stage_1_boss import enemy as enemy_3
 
 from tower_white import tower_w
 from tower_green import tower_g
-from tower_red import tower_r
+from tower_poison import tower_p
 
 
 name = "Stage_2"
@@ -25,14 +25,18 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i) for i in range(50)] + [enemy_2(i + 30) for i in range(25)] + [enemy(i + 30) for i in range(25)] + [enemy_3(60)]
+    enemy_1 = [enemy_2(i) for i in range(50)]
     grass = Grass()
     tile = Tile()
+
     UI_LEFT = Ui_Tower()
+    UI_BUTTON = Ui_Button()
+
 
     game_world.add_object(grass, 0)
-    game_world.add_object(UI_LEFT, 1)
     game_world.add_object(tile, 0)
+    game_world.add_object(UI_LEFT, 1)
+    game_world.add_object(UI_BUTTON,1)
     for pig in enemy_1 :
         game_world.add_object(pig, 2)
 
@@ -64,13 +68,13 @@ def handle_events():
                 if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
                     tower_have = tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)]
                     if tower_have == 8:
-                        get_tower = tower_w(event.x, 700 - 1 - event.y, False)
+                        get_tower = tower_p(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                     elif tower_have == 9:
-                        get_tower = tower_r(event.x, 700 - 1 - event.y, False)
+                        get_tower = tower_p(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                     elif tower_have == 10:
-                        get_tower = tower_g(event.x, 700 - 1 - event.y, False)
+                        get_tower = tower_p(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
             else:
                 if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] == 0):
