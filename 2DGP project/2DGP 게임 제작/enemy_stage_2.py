@@ -24,6 +24,7 @@ class enemy:
         self.count = show
         self.showtime = get_time()
         self.size = 50
+        self.poison_condition = 0
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage2_pig1.png')
 
@@ -34,6 +35,10 @@ class enemy:
             game_framework.GameState.money += 20
             game_world.add_object(die, 1)
         if self.count == 0 :
+            if self.poison_condition > 0:
+                self.hp -= 1
+                self.poison_condition -= 1
+
             if self.x > 0 :
                 self.frame = (self.frame + 12 * game_framework.frame_time) % 6
 
