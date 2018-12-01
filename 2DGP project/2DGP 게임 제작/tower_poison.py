@@ -1,7 +1,7 @@
 from pico2d import *
 import game_world
 import math
-import red_attack
+import poison_attack
 import game_framework
 import stage_1
 
@@ -19,7 +19,7 @@ class tower_p:
         self.reflect = ''
         self.attack = False
         self.set = set
-        self.range = 500
+        self.range = 100
         self.shottime = get_time()
         if tower_p.image is None:
             tower_p.image = load_image('tower_image//poison_tower.png')
@@ -37,7 +37,6 @@ class tower_p:
             for gets in game_world.enemy_objects():
                 if gets.hp >= 0 and gets.x > 0:
                     if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < self.range:
-                        self.radians = math.atan2((gets.y - self.y),(gets.x - self.x))
                         self.attack = True
                         break
                 else:
@@ -46,8 +45,9 @@ class tower_p:
             if self.attack == True:
                 self.frame = (self.frame + 6 * game_framework.frame_time) % 3
                 if self.attack_speed < get_time() - self.shottime:
-                    fire = red_attack.fire(self.x, self.y, self.radians)
-                    game_world.add_object(fire, 1)
+                    fire = [poison_attack.fire(self.x, self.y, (3.141592/4) * i) for i in range(8) ]
+                    for fires in fire :
+                        game_world.add_object(fires, 1)
                     self.shottime = get_time()
             else:
                 self.frame = (self.frame + 6 * game_framework.frame_time) % 3
