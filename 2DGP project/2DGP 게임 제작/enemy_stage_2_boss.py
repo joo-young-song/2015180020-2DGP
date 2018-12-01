@@ -58,7 +58,7 @@ class enemy:
             if self.poison_condition < self.count < get_time() - self.poison_time:
                 self.poison_condition = 0
             else:
-                self.hp -= 0.1
+                self.hp -= 0.2
                 self.poison_frame = (get_time() - self.poison_time)*2
                 if self.poison_frame > 6.9:
                     self.poison_condition = 0
