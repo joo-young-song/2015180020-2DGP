@@ -109,4 +109,5 @@ def draw():
 
     font = load_font('ENCR10B.TTF', 20)
     font.draw(925, 650, '%d' % game_framework.GameState.money, (255, 255, 255))
+    font.draw(925, 550, '%d' % game_framework.GameState.life, (255, 255, 255))
     update_canvas()

@@ -1,5 +1,5 @@
 class GameState:
-    def __init__(self, state, money = 0):
+    def __init__(self, state, money = 0, life = 10) :
         self.enter = state.enter
         self.exit = state.exit
         self.pause = state.pause
@@ -8,6 +8,7 @@ class GameState:
         self.update = state.update
         self.draw = state.draw
         self.money = money
+        self.life = life
 
 
 
@@ -43,8 +44,9 @@ running = None
 stack = None
 
 
-def change_state(state , money = 0):
+def change_state(state , money = 0, life = 10):
     GameState.money = money
+    GameState.life = life
     global stack
     if (len(stack) > 0):
         # execute the current state's exit function

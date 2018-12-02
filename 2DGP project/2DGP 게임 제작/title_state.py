@@ -1,6 +1,6 @@
 import game_framework
 from pico2d import *
-import choice_state
+import explain_state_1
 
 
 name = "TitleState"
@@ -26,7 +26,7 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(choice_state)
+                game_framework.change_state(explain_state_1)
 
 
 def draw():

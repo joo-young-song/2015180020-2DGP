@@ -1,26 +1,16 @@
 import game_framework
 from pico2d import *
-import map_stage_1
-import map_stage_2
-import map_stage_3
-import stage_1
-import stage_2
-import stage_3
+import choice_state
 
 
 name = "TitleState"
 image = None
-image_stage_writting = None
-image_white_blend = None
-
 
 def enter():
     global image
-    global image_stage_writting
-    global image_white_blend
-    image = load_image('background_image//choice_stage_background.png')
 
-    image_stage_writting = load_image('background_image//stage.png')
+
+    image = load_image('background_image//explain (1).png')
 
 
 def exit():
@@ -29,6 +19,7 @@ def exit():
 
 
 def handle_events():
+    global count
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -37,15 +28,12 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(stage_3, 200, 10)
+                    game_framework.change_state(choice_state)
 
 
 def draw():
     clear_canvas()
-
-    image.draw(500, 350, 1000, 700)
-
-    image_stage_writting.draw(500,600,400,100)
+    image.draw(500, 350)
     update_canvas()
 
 
