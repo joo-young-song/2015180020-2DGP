@@ -23,6 +23,8 @@ class fire:
             fire.lazer_last = load_image('bullet_image//lazer_last.png') # w 48 h 100
 
     def update(self):
+        if self.x < 0 or self.x > 800 or self.y < 0 or self.y > 700:
+            game_world.remove_object(self)
         if self.count == 0:
             self.x = self.x + 400*math.cos(self.radians)*game_framework.frame_time
             self.y = self.y + 400*math.sin(self.radians)*game_framework.frame_time

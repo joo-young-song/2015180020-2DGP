@@ -18,14 +18,14 @@ class enemy:
         self.speed = 100
         self.x = -100
         self.y = 450
-        self.hp = 2000
+        self.hp = 2500
         self.radians = 0.0
         self.head = 0
         self.frame = 0
         self.reflect = ''
         self.count = show
         self.showtime = get_time()
-        self.size = 50
+        self.size = 100
 
         self.poison_time = 0
         self.poison_condition = 0
@@ -69,7 +69,7 @@ class enemy:
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
-                self.frame = (self.frame + 12 * game_framework.frame_time) % 6
+                self.frame = (self.frame + 10 * game_framework.frame_time) % 5
 
                 self.x = self.x + (self.speed * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (self.speed * math.sin(self.radians)) * game_framework.frame_time

@@ -16,6 +16,8 @@ class fire:
             fire.image = load_image('bullet_image//attack_1.png')
 
     def update(self):
+        if self.x < 0 or self.x > 800 or self.y < 0 or self.y > 700:
+            game_world.remove_object(self)
         self.x = self.x + 250*math.cos(self.radians)*game_framework.frame_time
         self.y = self.y + 250*math.sin(self.radians)*game_framework.frame_time
         self.frame = (self.frame+6*game_framework.frame_time) % 3

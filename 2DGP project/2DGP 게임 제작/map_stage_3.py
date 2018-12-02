@@ -56,7 +56,7 @@ class Ui_Tower:
         self.white_tower.draw(850, 450)
         font.draw(875, 475, '50' , (255, 255, 255))
         self.red_tower.draw(950, 450)
-        font.draw(975, 475, '100', (255, 255, 255))
+        font.draw(960, 475, '100', (255, 255, 255))
         self.green_tower.draw(850, 350)
         font.draw(875, 375, '150', (255, 255, 255))
 
