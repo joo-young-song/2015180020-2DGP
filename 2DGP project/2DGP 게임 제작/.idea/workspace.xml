@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d41bf4d-151a-410f-879a-92a146bc99f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/map_stage_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_stage_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_stage_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_stage_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stage_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/stage_3.py" afterDir="false" />
-    </list>
+    <list default="true" id="0d41bf4d-151a-410f-879a-92a146bc99f2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +56,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stage_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="102" column="40" lean-forward="true" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="304">
+              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -231,7 +224,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="182" />
     <option name="y" value="160" />
     <option name="width" value="960" />
@@ -881,11 +874,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stage_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="102" column="40" lean-forward="true" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="304">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
         </state>
       </provider>
     </entry>

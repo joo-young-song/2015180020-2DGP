@@ -12,7 +12,7 @@ def enter():
 
     image = load_image('background_image//title_image.jpg')
     global bgm
-    bgm = load_music('sound//boss1.mp3')
+    bgm = load_music('sound//start.mp3')
     bgm.set_volume(50)
     bgm.repeat_play()
 def exit():
