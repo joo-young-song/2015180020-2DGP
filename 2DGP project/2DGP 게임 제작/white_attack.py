@@ -23,7 +23,7 @@ class fire:
         self.frame = (self.frame+6*game_framework.frame_time) % 3
         for gets in game_world.enemy_objects():
             if gets.hp >= 0 and gets.x > 0:
-                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size - 10:
+                if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size - 30:
                     game_world.remove_object(self)
                     gets.hp -= 11
                     break
