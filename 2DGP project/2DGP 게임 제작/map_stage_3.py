@@ -30,6 +30,18 @@ class Grass:
                 if tile_rotate[y][x] == 0 :
                     self.image.draw(x * 50 + 25, y * 50 + 25, 50, 50)
 
+class Tile:
+    def __init__(self):
+        self.image = load_image('background_image//tile 1.jpg')
+    def update(self):
+        pass
+
+    def draw(self):
+        for x in range(16):
+            for y in range(14):
+                if tile_rotate[y][x] != 0 :
+                    self.image.rotate_draw(0, x * 50 + 25, y * 50 + 25, 50, 50)
+
 class Ui_Tower:
     def __init__(self):
         self.white_tower = load_image('tower_image//white_tower_UI.png') # 875 ,450
@@ -52,19 +64,6 @@ class Ui_Tower:
         font.draw(975, 375, '25' , (255, 255, 255))
         self.ice_tower.draw(850, 250, 100, 100)
         font.draw(875, 275, '50', (255, 255, 255))
-
-
-class Tile:
-    def __init__(self):
-        self.image = load_image('background_image//tile 1.jpg')
-    def update(self):
-        pass
-
-    def draw(self):
-        for x in range(16):
-            for y in range(14):
-                if tile_rotate[y][x] != 0 :
-                    self.image.rotate_draw(0, x * 50 + 25, y * 50 + 25, 50, 50)
 
 class Ui_Back:
     def __init__(self):

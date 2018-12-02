@@ -2,7 +2,7 @@ from pico2d import *
 
 import math
 
-import map_stage_2
+import map_stage_3
 
 import game_world
 
@@ -17,7 +17,7 @@ class enemy:
     def __init__(self, show = 0):
         self.speed = 125
         self.x = -100
-        self.y = 350
+        self.y = 450
         self.hp = 150
         self.radians = 0.0
         self.head = 0
@@ -74,19 +74,19 @@ class enemy:
                 self.x = self.x + (self.speed * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (self.speed * math.sin(self.radians)) * game_framework.frame_time
 
-                if map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
+                if map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 1:
                     self.radians = 3.14
                     self.reflect = "hv"
-                elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
+                elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 2:
                     self.radians = -1.57
                     self.reflect = ''
-                elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
+                elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 3:
                     self.radians = 0
                     self.reflect = ''
-                elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
+                elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 4:
                     self.radians = 1.57
                     self.reflect = ''
-                elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 6:
+                elif map_stage_3.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 6:
                     game_world.remove_object(self)
 
 
