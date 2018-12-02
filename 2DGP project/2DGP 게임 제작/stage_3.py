@@ -4,7 +4,7 @@ import game_world
 from map_stage_3 import *
 
 from enemy_stage_3 import enemy
-from enemy_stage_2_2 import enemy as enemy_2
+from enemy_stage_3_2 import enemy as enemy_2
 
 from enemy_stage_2_boss import enemy as enemy_3
 
@@ -28,7 +28,7 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i ) for i in range(50)]
+    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 40) for i in range(50)]
     grass = Grass()
     tile = Tile()
 

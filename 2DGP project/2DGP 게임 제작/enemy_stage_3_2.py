@@ -35,7 +35,7 @@ class enemy:
         self.ice_condition = 0
         self.ice_frame = 0
         if enemy.image is None:
-            enemy.image = load_image('enemy_image//stage3_pig1.png')
+            enemy.image = load_image('enemy_image//stage3_pig2.png')
         if enemy.poison_image is None:
             enemy.poison_image = load_image('enemy_image//poison_condition.png')
         if enemy.ice_image is None:
@@ -69,7 +69,7 @@ class enemy:
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
-                self.frame = (self.frame + 10 * game_framework.frame_time) % 5
+                self.frame = (self.frame + 12 * game_framework.frame_time) % 6
 
                 self.x = self.x + (self.speed * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (self.speed * math.sin(self.radians)) * game_framework.frame_time
@@ -98,7 +98,7 @@ class enemy:
                 self.count = 0
 
     def draw(self):
-        self.image.clip_composite_draw(0, 80 * int(self.frame), 95, 80, self.radians, self.reflect, self.x, self.y,
+        self.image.clip_composite_draw(104 * int(self.frame), 0, 104, 97, self.radians, self.reflect, self.x, self.y,
                                        self.size, self.size)
 
         if self.poison_condition > 0:
