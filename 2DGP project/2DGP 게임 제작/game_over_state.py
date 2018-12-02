@@ -9,9 +9,7 @@ image = None
 def enter():
     global image
 
-
-    image = load_image('background_image//explain (1).png')
-
+    image = load_image('background_image//game_over.jpg')
 
 def exit():
     global image

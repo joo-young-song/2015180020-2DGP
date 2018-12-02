@@ -28,8 +28,8 @@ def enter():
 
 
 def exit():
-    global image
-    del (image)
+    for image in images :
+        del (image)
 
 
 def handle_events():

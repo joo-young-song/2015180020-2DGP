@@ -3,6 +3,8 @@ import game_world
 
 from map_stage_1 import *
 
+import game_over_state
+
 from enemy_stage_1 import enemy
 from enemy_stage_1_2 import enemy as enemy_2
 from enemy_stage_1_boss import enemy as enemy_3
@@ -101,6 +103,8 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+    if game_framework.GameState.life < 1 :
+        game_framework.change_state(game_over_state)
 
 
 

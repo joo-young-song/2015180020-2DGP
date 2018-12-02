@@ -90,7 +90,7 @@ class enemy:
                     self.reflect = ''
                 elif map_stage_2.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 5:
                     game_world.remove_object(self)
-
+                    game_framework.GameState.life -= 1
 
             else :
                 self.x = self.x + (self.speed  * math.cos(self.radians)) * game_framework.frame_time
