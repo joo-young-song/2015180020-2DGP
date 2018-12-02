@@ -3,6 +3,8 @@ import game_world
 
 from map_stage_1 import *
 
+import game_clear_state
+
 import game_over_state
 
 from enemy_stage_1 import enemy
@@ -24,10 +26,12 @@ tower_have = 0
 
 get_tower = None
 
+enemy3 = None
 def enter():
     global enemy_1
-
-    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(25)] + [enemy(i + 50) for i in range(25)] + [enemy_3(100)]
+    global enemy3
+    enemy3 = enemy_3(100)
+    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(25)] + [enemy(i + 50) for i in range(25)] + [enemy3]
     grass = Grass()
     tile = Tile()
     UI_LEFT = Ui_Tower()
@@ -101,10 +105,16 @@ def handle_events():
 
 
 def update():
+    global enemy3
+
     for game_object in game_world.all_objects():
         game_object.update()
     if game_framework.GameState.life < 1 :
         game_framework.change_state(game_over_state)
+
+    if enemy3.hp <= 0 :
+        game_framework.change_state(game_clear_state)
+
 
 
 

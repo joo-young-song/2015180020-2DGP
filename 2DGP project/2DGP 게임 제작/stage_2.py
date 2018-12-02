@@ -5,6 +5,8 @@ from map_stage_2 import *
 
 import game_over_state
 
+import game_clear_state
+
 from enemy_stage_2 import enemy
 from enemy_stage_2_2 import enemy as enemy_2
 
@@ -24,10 +26,14 @@ tower_have = 0
 
 get_tower = None
 
+enemy3 = None
+
 def enter():
     global enemy_1
+    global enemy3
 
-    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(50)] + [enemy_3(i + 100) for i in range(1)]
+    enemy3 = enemy_3(100)
+    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(50)] + [enemy3]
     grass = Grass()
     tile = Tile()
 
@@ -89,7 +95,7 @@ def handle_events():
                     get_tower.y = int((700 - 1 - event.y) // 50) * 50 + 25
                     tower_have = 0
                 elif tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] == 12:
-                    game_framework.GameState.money += (tower_have - 7) * 25
+                    game_framework.GameState.money += (tower_have - 7) * 50
                     game_world.remove_object(get_tower)
                     tower_have = 0
         elif event.type == SDL_MOUSEMOTION:
@@ -105,6 +111,8 @@ def update():
     if game_framework.GameState.life < 1 :
         game_framework.change_state(game_over_state)
 
+    if enemy3.hp <= 0:
+        game_framework.change_state(game_clear_state)
 
 
 def draw():

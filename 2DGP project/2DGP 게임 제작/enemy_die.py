@@ -23,5 +23,6 @@ class die:
         if self.frame > 3:
             game_world.remove_object(self)
 
+
     def draw(self):
         self.image.clip_composite_draw(0, 117 * int(self.frame), 127, 117, 0, '', self.x, self.y, self.width, self.height)
