@@ -84,6 +84,7 @@ class Ui_Button:
         self.undo_button = load_image('background_image//undo.png') # 140 140 900 550
         self.money_image = load_image('background_image//money.png') # 400 400 850 500
         self.egg_image = load_image('background_image//eggs.png')
+        self.point_image = load_image('background_image//point.png')
         pass
 
     def update(self):
@@ -93,3 +94,6 @@ class Ui_Button:
         self.undo_button.draw(900, 100)
         self.money_image.draw(850, 650)
         self.egg_image.draw(850, 550, 100, 100)
+        self.point_image.draw(50, 450, 30, 30)
+        # self.point_image.draw(750, 50, 30, 30)
+        self.point_image.clip_composite_draw(0, 0, 61, 106, 3.141592 / 2, '', 250, 650, 30, 30)
