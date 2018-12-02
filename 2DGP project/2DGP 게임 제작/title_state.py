@@ -5,13 +5,16 @@ import explain_state_1
 
 name = "TitleState"
 image = None
-
+bgm = None
 
 def enter():
     global image
+
     image = load_image('background_image//title_image.jpg')
-
-
+    global bgm
+    bgm = load_music('sound//boss1.mp3')
+    bgm.set_volume(50)
+    bgm.repeat_play()
 def exit():
     global image
     del (image)

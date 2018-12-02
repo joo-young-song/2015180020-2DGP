@@ -10,10 +10,7 @@ class GameState:
         self.money = money
         self.life = life
 
-
-
 class TestGameState:
-
     def __init__(self, name):
         self.name = name
 

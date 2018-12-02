@@ -5,10 +5,13 @@ import choice_state
 
 name = "TitleState"
 image = None
-
+bgm = None
 def enter():
     global image
-
+    global bgm
+    bgm = load_music('sound//clear.mp3')
+    bgm.set_volume(50)
+    bgm.play()
     image = load_image('background_image//game_clear.png')
 
 def exit():

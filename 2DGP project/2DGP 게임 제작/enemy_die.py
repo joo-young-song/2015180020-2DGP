@@ -14,12 +14,20 @@ class die:
         self.height = sizey
         self.hp = 10
         self.frame = 0
+        self.die_sound = load_wav('sound//enemy_die.wav')
+        self.die_sound.set_volume(95)
+        self.sound = True
 
         if die.image is None:
             die.image = load_image('enemy_image//enemy_die.png')
 
     def update(self):
         self.frame = (self.frame + 10 * game_framework.frame_time) % 5
+
+        if self.sound == True :
+            self.die_sound.play()
+            self.sound = False
+
         if self.frame > 3:
             game_world.remove_object(self)
 

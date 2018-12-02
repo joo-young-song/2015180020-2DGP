@@ -17,6 +17,7 @@ image_white_blend = None
 image_stage_1 = None
 image_stage_2 = None
 image_stage_3 = None
+bgm = None
 
 def enter():
     global image
@@ -25,6 +26,10 @@ def enter():
     global image_stage_1
     global image_stage_2
     global image_stage_3
+    global bgm
+    bgm = load_music('sound//choice.mp3')
+    bgm.set_volume(84)
+    bgm.repeat_play()
 
     image = load_image('background_image//choice_stage_background.png')
 

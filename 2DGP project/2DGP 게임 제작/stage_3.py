@@ -73,7 +73,6 @@ def handle_events():
             game_framework.quit()
 
         elif event.type == SDL_MOUSEBUTTONDOWN:
-            print(tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)])
             if tower_have == 0:
                 if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
                     tower_have = tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)]
