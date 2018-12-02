@@ -6,7 +6,7 @@ from map_stage_3 import *
 from enemy_stage_3 import enemy
 from enemy_stage_3_2 import enemy as enemy_2
 
-from enemy_stage_2_boss import enemy as enemy_3
+from enemy_stage_3_boss import enemy as enemy_3
 
 from tower_white import tower_w
 from tower_green import tower_g
@@ -28,7 +28,7 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 40) for i in range(50)]
+    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(50)] + [enemy_3(100)]
     grass = Grass()
     tile = Tile()
 
@@ -73,11 +73,23 @@ def handle_events():
             if tower_have == 0:
                 if (tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] > 7):
                     tower_have = tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)]
-                    if tower_have == 8 and game_framework.GameState.money - 25 >= 0:
+                    if tower_have == 8 and game_framework.GameState.money - 50 >= 0:
+                        get_tower = tower_w(event.x, 700 - 1 - event.y, False)
+                        game_world.add_object(get_tower, 1)
+                        game_framework.GameState.money -= 50
+                    elif tower_have == 9 and game_framework.GameState.money - 100 >= 0:
+                        get_tower = tower_r(event.x, 700 - 1 - event.y, False)
+                        game_world.add_object(get_tower, 1)
+                        game_framework.GameState.money -= 100
+                    elif tower_have == 10 and game_framework.GameState.money - 150 >= 0:
+                        get_tower = tower_g(event.x, 700 - 1 - event.y, False)
+                        game_world.add_object(get_tower, 1)
+                        game_framework.GameState.money -= 150
+                    elif tower_have == 11 and game_framework.GameState.money - 25 >= 0:
                         get_tower = tower_p(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                         game_framework.GameState.money -= 25
-                    elif tower_have == 9 and game_framework.GameState.money - 50 >= 0:
+                    elif tower_have == 13 and game_framework.GameState.money - 50 >= 0:
                         get_tower = tower_i(event.x, 700 - 1 - event.y, False)
                         game_world.add_object(get_tower, 1)
                         game_framework.GameState.money -= 50

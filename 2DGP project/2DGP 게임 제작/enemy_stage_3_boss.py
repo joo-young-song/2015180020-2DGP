@@ -15,10 +15,10 @@ class enemy:
     poison_image = None
     ice_image = None
     def __init__(self, show = 0):
-        self.speed = 125
+        self.speed = 100
         self.x = -100
         self.y = 450
-        self.hp = 250
+        self.hp = 1500
         self.radians = 0.0
         self.head = 0
         self.frame = 0
@@ -35,7 +35,7 @@ class enemy:
         self.ice_condition = 0
         self.ice_frame = 0
         if enemy.image is None:
-            enemy.image = load_image('enemy_image//stage3_pig1.png')
+            enemy.image = load_image('enemy_image//stage3_boss.png')
         if enemy.poison_image is None:
             enemy.poison_image = load_image('enemy_image//poison_condition.png')
         if enemy.ice_image is None:
@@ -45,19 +45,19 @@ class enemy:
         if self.ice_condition > 0:
             if self.ice_condition < self.count < get_time() - self.ice_time:
                 self.ice_condition = 0
-                self.speed = 125
+                self.speed = 100
             else:
-                self.speed = 80
+                self.speed = 40
                 self.ice_frame = (get_time() - self.ice_time)
                 if self.ice_frame > 6.9:
                     self.ice_condition = 0
-                    self.speed = 125
+                    self.speed = 100
 
         if self.poison_condition > 0:
             if self.poison_condition < self.count < get_time() - self.poison_time:
                 self.poison_condition = 0
             else:
-                self.hp -= 0.1
+                self.hp -= 0.01
                 self.poison_frame = (get_time() - self.poison_time)*2
                 if self.poison_frame > 6.9:
                     self.poison_condition = 0
@@ -65,11 +65,11 @@ class enemy:
         if self.hp < 0:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,50,50)
-            game_framework.GameState.money += 15
+            game_framework.GameState.money += 25
             game_world.add_object(die, 1)
         if self.count == 0 :
             if self.x > 0 :
-                self.frame = (self.frame + 10 * game_framework.frame_time) % 5
+                self.frame = (self.frame + 12 * game_framework.frame_time) % 6
 
                 self.x = self.x + (self.speed * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (self.speed * math.sin(self.radians)) * game_framework.frame_time
@@ -98,7 +98,7 @@ class enemy:
                 self.count = 0
 
     def draw(self):
-        self.image.clip_composite_draw(0, 80 * int(self.frame), 95, 80, self.radians, self.reflect, self.x, self.y,
+        self.image.clip_composite_draw(116 * int(self.frame), 0, 116, 116, self.radians, self.reflect, self.x, self.y,
                                        self.size, self.size)
 
         if self.poison_condition > 0:
