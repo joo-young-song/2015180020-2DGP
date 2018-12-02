@@ -6,6 +6,7 @@ import map_stage_3
 import stage_1
 import stage_2
 import stage_3
+import game_world
 
 
 name = "TitleState"
@@ -37,6 +38,7 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
+                game_world.objects = [[],[],[]]
                 game_framework.change_state(stage_3, 200, 10)
 
 

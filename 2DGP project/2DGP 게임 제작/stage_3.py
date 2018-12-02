@@ -5,6 +5,8 @@ from map_stage_3 import *
 
 import game_over_state
 
+import stage_2
+
 from enemy_stage_3 import enemy
 from enemy_stage_3_2 import enemy as enemy_2
 
@@ -116,6 +118,8 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+    if game_framework.GameState.life < 1 :
+        game_framework.change_state(game_over_state,0,0)
 
 
 
@@ -123,12 +127,6 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
-
-    if game_framework.GameState.life < 1 :
-        game_world.clear()
-        game_framework.change_state(game_over_state)
-
-
     font = load_font('ENCR10B.TTF', 20)
     font.draw(925, 650, '%d' % game_framework.GameState.money, (255, 255, 255))
     font.draw(925, 550, '%d' % game_framework.GameState.life, (255, 255, 255))
