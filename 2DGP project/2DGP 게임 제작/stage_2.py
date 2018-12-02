@@ -1,7 +1,7 @@
 import game_framework
 import game_world
 
-from map_stage_2 import *
+from map_stage_3 import *
 
 from enemy_stage_2 import enemy
 from enemy_stage_2_2 import enemy as enemy_2
@@ -26,21 +26,21 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(50)] + [enemy_3(i + 80) for i in range(1)]
+    #enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(50)] + [enemy_3(i + 80) for i in range(1)]
     grass = Grass()
     tile = Tile()
 
-    UI_LEFT = Ui_Tower()
-    UI_BUTTON = Ui_Button()
-    UI_BACK = Ui_Back()
+    #UI_LEFT = Ui_Tower()
+    #UI_BUTTON = Ui_Button()
+    #UI_BACK = Ui_Back()
 
-    game_world.add_object(UI_BACK, 0)
+    #game_world.add_object(UI_BACK, 0)
     game_world.add_object(grass, 0)
     game_world.add_object(tile, 0)
-    game_world.add_object(UI_LEFT, 1)
-    game_world.add_object(UI_BUTTON,1)
-    for pig in enemy_1 :
-        game_world.add_object(pig, 2)
+    #game_world.add_object(UI_LEFT, 1)
+    #game_world.add_object(UI_BUTTON,1)
+    #for pig in enemy_1 :
+     #   game_world.add_object(pig, 2)
 
 
 
