@@ -10,8 +10,8 @@ def enter():
     global image
     global bgm
     bgm = load_music('sound//clear.mp3')
-    bgm.set_volume(50)
-    bgm.play()
+    bgm.set_volume(70)
+    bgm.repeat_play()
     image = load_image('background_image//game_clear.png')
 
 def exit():

@@ -28,6 +28,8 @@ get_tower = None
 
 enemy3 = None
 
+change = False
+
 def enter():
     global enemy_1
     global enemy3
@@ -104,10 +106,16 @@ def handle_events():
 
 
 def update():
+    global enemy3
+    global change
+
+    if enemy3.count == 0 and change == False:
+        Grass().bgm.stop()
+        enemy3.bgm.repeat_play()
+        change = True
     for game_object in game_world.all_objects():
         game_object.update()
-
-    if game_framework.GameState.life < 1 :
+    if game_framework.GameState.life < 1:
         game_framework.change_state(game_over_state)
 
     if enemy3.hp <= 0:

@@ -26,6 +26,8 @@ class enemy:
         self.count = show
         self.showtime = get_time()
         self.size = 100
+        self.bgm = load_music('sound//boss1.mp3')
+        self.bgm.set_volume(80)
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage1_boss.png')
 
@@ -34,8 +36,8 @@ class enemy:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,100,100)
             game_world.add_object(die, 1)
-            #game_framework.change_state(stage_2)
-        if self.count == 0 :
+            self.bgm.stop()
+        if self.count == 0:
             if self.x > 0 :
                 self.frame = (self.frame + 8 * game_framework.frame_time) % 4
 
@@ -58,12 +60,9 @@ class enemy:
                 elif map_stage_1.tile_rotate[int(self.y // 50)][int(self.x // 50)] == 5:
                     game_world.remove_object(self)
                     game_framework.GameState.life -= 10
-
             else :
                 self.x = self.x + (50 * math.cos(self.radians)) * game_framework.frame_time
                 self.y = self.y + (50 * math.sin(self.radians)) * game_framework.frame_time
-
-
         else:
             if self.count < get_time() - self.showtime:
                 self.count = 0

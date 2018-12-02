@@ -34,6 +34,9 @@ class enemy:
         self.ice_time = 0
         self.ice_condition = 0
         self.ice_frame = 0
+
+        self.bgm = load_music('sound//boss2.mp3')
+        self.bgm.set_volume(64)
         if enemy.image is None:
             enemy.image = load_image('enemy_image//stage2_boss.png')
         if enemy.poison_image is None:
@@ -67,6 +70,7 @@ class enemy:
             game_world.remove_object(self)
             die = enemy_die.die(self.x,self.y,self.size,self.size)
             game_world.add_object(die, 1)
+            self.bgm.stop()
 
         if self.count == 0 :
             if self.x > 0 :
