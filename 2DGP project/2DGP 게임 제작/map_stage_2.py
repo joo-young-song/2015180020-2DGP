@@ -58,7 +58,6 @@ class Ui_Tower:
     def __init__(self):
         self.poison_tower = load_image('tower_image//poison_tower_UI.png') # 875 ,450
         self.ice_tower = load_image('tower_image//ice_tower_UI.png') # 925, 450
-        #self.green_tower = load_image('tower_image//green_tower_UI.png') # 875, 350
     def update(self):
         pass
     def draw(self):
@@ -67,7 +66,6 @@ class Ui_Tower:
         font.draw(875, 475, '25' , (255, 255, 255))
         self.ice_tower.draw(950, 450, 100, 100)
         font.draw(975, 475, '50', (255, 255, 255))
-        #self.green_tower.draw(850, 350)
 
 class Ui_Button:
     def __init__(self):

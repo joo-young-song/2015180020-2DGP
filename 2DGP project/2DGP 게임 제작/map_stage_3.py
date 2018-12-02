@@ -35,6 +35,8 @@ class Ui_Tower:
         self.white_tower = load_image('tower_image//white_tower_UI.png') # 875 ,450
         self.red_tower = load_image('tower_image//red_tower_UI.png') # 925, 450
         self.green_tower = load_image('tower_image//green_tower_UI.png') # 875, 350
+        self.poison_tower = load_image('tower_image//poison_tower_UI.png') # 875 ,450
+        self.ice_tower = load_image('tower_image//ice_tower_UI.png') # 925, 450
     def update(self):
         pass
     def draw(self):
@@ -45,6 +47,11 @@ class Ui_Tower:
         font.draw(975, 475, '100', (255, 255, 255))
         self.green_tower.draw(850, 350)
         font.draw(875, 375, '150', (255, 255, 255))
+
+        self.poison_tower.draw(950, 350, 100, 100)
+        font.draw(975, 375, '25' , (255, 255, 255))
+        self.ice_tower.draw(850, 250, 100, 100)
+        font.draw(875, 275, '50', (255, 255, 255))
 
 
 class Tile:

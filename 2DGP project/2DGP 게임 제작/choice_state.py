@@ -5,6 +5,7 @@ import map_stage_2
 import map_stage_3
 import stage_1
 import stage_2
+import stage_3
 
 
 name = "TitleState"
@@ -36,7 +37,7 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(stage_2, 100)
+                game_framework.change_state(stage_3, 100)
 
 
 def draw():
