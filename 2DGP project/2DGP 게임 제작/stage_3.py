@@ -105,7 +105,12 @@ def handle_events():
                     get_tower.y = int((700 - 1 - event.y) // 50) * 50 + 25
                     tower_have = 0
                 elif tile_rotate[int((700 - 1 - event.y) // 50)][int(event.x // 50)] == 12:
-                    game_framework.GameState.money += (tower_have - 7) * 25
+                    if tower_have == 11 :
+                        game_framework.GameState.money += 25
+                    elif tower_have == 13:
+                        game_framework.GameState.money += 50
+                    else :
+                        game_framework.GameState.money += (tower_have - 7) * 50
                     game_world.remove_object(get_tower)
                     tower_have = 0
         elif event.type == SDL_MOUSEMOTION:

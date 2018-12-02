@@ -20,6 +20,10 @@ tile_rotate = [[3, 3, 5, 5, 5, 4, 0, 0, 0, 0, 3, 3, 5, 5, 5, 4, 12, 12, 12, 12],
 class Grass:
     def __init__(self):
         self.image = load_image('background_image//grass 1.jpg')
+        self.bgm = load_music('sound//stage3.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
+
 
     def update(self):
         pass
