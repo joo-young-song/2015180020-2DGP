@@ -27,7 +27,7 @@ get_tower = None
 def enter():
     global enemy_1
 
-    enemy_1 = [enemy(i) for i in range(50)] + [enemy_2(i + 30) for i in range(25)] + [enemy(i + 30) for i in range(25)] + [enemy_3(60)]
+    enemy_1 = [enemy(i + 10) for i in range(50)] + [enemy_2(i + 50) for i in range(25)] + [enemy(i + 50) for i in range(25)] + [enemy_3(100)]
     grass = Grass()
     tile = Tile()
     UI_LEFT = Ui_Tower()
