@@ -17,13 +17,15 @@ class fire:
             fire.image = load_image('bullet_image//ninja_bullet.png')
 
     def update(self):
+        if self.x < 0 or self.x > 800 or self.y < 0 or self.y > 700:
+            game_world.remove_object(self)
         self.x = self.x + 350*math.cos(self.radians)*game_framework.frame_time
         self.y = self.y + 350*math.sin(self.radians)*game_framework.frame_time
         for gets in game_world.enemy_objects():
             if gets.hp >= 0 and gets.x > 0:
                 if math.sqrt((gets.x - self.x) * (gets.x - self.x) + (gets.y - self.y) * (gets.y - self.y)) < gets.size - 20:
                     game_world.remove_object(self)
-                    gets.hp -= self.bullet_color/10
+                    gets.hp -= self.bullet_color/2
                     break
 
 

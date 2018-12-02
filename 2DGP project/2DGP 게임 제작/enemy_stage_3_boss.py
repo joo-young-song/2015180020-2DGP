@@ -18,7 +18,7 @@ class enemy:
         self.speed = 100
         self.x = -100
         self.y = 450
-        self.hp = 1500
+        self.hp = 2000
         self.radians = 0.0
         self.head = 0
         self.frame = 0
@@ -47,7 +47,7 @@ class enemy:
                 self.ice_condition = 0
                 self.speed = 100
             else:
-                self.speed = 40
+                self.speed = 45
                 self.ice_frame = (get_time() - self.ice_time)
                 if self.ice_frame > 6.9:
                     self.ice_condition = 0

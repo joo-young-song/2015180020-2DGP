@@ -19,7 +19,7 @@ class tower_r:
         self.reflect = ''
         self.attack = False
         self.set = set
-        self.range = 1000
+        self.range = 200
         self.shottime = get_time()
         if tower_r.image is None:
             tower_r.image = load_image('tower_image//red_tower.png')
